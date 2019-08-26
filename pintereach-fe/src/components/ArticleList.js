@@ -4,9 +4,8 @@ import ArticleCard from './ArticleCard.js';
 
 export default function ArticleList() {
  
-    const ArticleList = props => {
-        const [article, setArticle] = useState([])
-        useEffect(() => {
+const [article, setArticle] = useState()
+ useEffect(() => {
             axios
               .get('http://api.plos.org/search?q=abstract:science&api_key=shsiy9LkzZU4ckFrMirE')
               .then(response => {
@@ -21,10 +20,10 @@ export default function ArticleList() {
 
   return (
     <section className="article-list">
-        {article.map(articles => {
+        {article.map(article => {
           return <ArticleCard key={article.id} title = {article.title_display} abstract = {article.abstract} />;
         })}
     </section>
   );
 }
-}
+
