@@ -14,4 +14,3 @@ export default function ArticleCard({ article }) {
   );
 }
 
-export default ArticleCard;
