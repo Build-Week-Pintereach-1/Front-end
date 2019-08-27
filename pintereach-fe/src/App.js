@@ -11,8 +11,11 @@ function App() {
   const [search, setSearch] = useState("")
   return (
     <div className="App">
+     
       <Header search={search} setSearch={setSearch}/>
-      <MainContainer />
+      <MainContainer>
+        <ArticleList />
+      </MainContainer >
       <LoginForm />
       <SignUpForm />
     </div>
