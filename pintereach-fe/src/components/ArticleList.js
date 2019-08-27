@@ -26,7 +26,7 @@ export default function ArticleList() {
     return (
       <section className="article-list">
         <button onClick={() => setType("id")}>Test Search Type</button>
-         //This button changes the 'type' field in the axios get. It will be changed to a drop down.
+         {/* //This button changes the 'type' field in the axios get. It will be changed to a drop down. */}
 
         <button onClick={() => setQuery("physics")}>Test Seach Query</button>
           //This button changes the 'search' field in the axios get. It will be changed to a string input.

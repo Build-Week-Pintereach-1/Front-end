@@ -19,6 +19,7 @@ function App() {
       </MainContainer >
       <LoginForm />
       <SignUpForm />
+
     </div>
   );
 }

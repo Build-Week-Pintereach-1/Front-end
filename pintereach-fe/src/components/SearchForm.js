@@ -45,26 +45,22 @@ function SearchForm ({search, setSearch}) {
 
         const newArray = queryArray
             .map((arr, index) => {
-
-                if ((index === queryArray.length-1) && arr[1]) {
-                    console.log("condition 1 called!", arr)
-                    return `${arr[0]}:"${arr[1]}`
-                } else if (arr[1]) {
-                    console.log("condition 2 called!", arr)
-                    return `${arr[0]}:"${arr[1]}" AND `
+                if (arr[1]) {
+                    console.log("condition 1 called!", arr, index, queryArray.length)
+                    return `${arr[0]}:"${arr[1]}"`
                 } else {
-                    console.log("condition 3 called!", arr)
-                    return 
+                    console.log("condition 3 called!", arr, index, queryArray.length)
+                    return
                 }
             })
             .filter(arr => {
                 return !arr === false
             })
-            .join('')
+            .join(' AND ')
+            
 
         console.log("new Array: ", newArray)
         setSearch(newArray)
-        
     }
 
     return (
