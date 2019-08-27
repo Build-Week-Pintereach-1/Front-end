@@ -11,9 +11,7 @@ function App() {
     <div className="App">
      
       <Header search={search} setSearch={setSearch}/>
-      <MainContainer>
-        <ArticleList />
-      </MainContainer>
+      <ArticleList search={search}/>
 
     </div>
   );
