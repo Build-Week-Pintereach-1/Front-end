@@ -20,6 +20,7 @@ function ArticleList({search}) {
   
     return (
       <section className="article-list">
+
           {article.map(article => {
             return <ArticleCard key= {article.id} article = {article}/>;
           })}
