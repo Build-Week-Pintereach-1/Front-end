@@ -59,7 +59,7 @@ function SearchForm ({search, setSearch}) {
             .join(' AND ')
             
 
-        console.log(newArray)
+        console.log("new Array: ", newArray)
         setSearch(newArray)
     }
 
