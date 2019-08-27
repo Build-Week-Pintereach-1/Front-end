@@ -1,3 +1,15 @@
+/**
+ * This page contains color variables for consistent styling. Colors are stored as strings in an object; access the colors using dot notation:
+
+(example using styled components)
+
+const HeaderDiv = styled.div`
+        background-color: ${colors.primary.dark};
+    `
+ * 
+ */
+
+
 
 export const Colors = {
     primary: {
