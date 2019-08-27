@@ -2,18 +2,20 @@ import React, { useState } from 'react';
 import './App.css';
 
 import Header from './components/Header';
-import MainContainer from './components/MainContainer'
-import ArticleList from './components/ArticleList.js'
+import MainContainer from './components/MainContainer';
+import ArticleList from './components/ArticleList.js';
 
 function App() {
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("");
+
   return (
     <div className="App">
-      <Header search = {search} setSearch = {setSearch} />
+     
+      <Header search={search} setSearch={setSearch} />
       <MainContainer>
-        
-      </MainContainer>
-      <ArticleList search = {search} />
+       <ArticleList />
+      </ MainContainer>
+    
     </div>
   );
 }
