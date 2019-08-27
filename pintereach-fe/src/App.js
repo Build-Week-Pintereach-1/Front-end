@@ -12,15 +12,22 @@ import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   const [search, setSearch] = useState("")
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token") || false)
   return (
     <div className="App">
       <Header search={search} setSearch={setSearch} />
       <div>
-        <Route exact path="/" component={ArticleList} />
+        <Route exact path="/" render = {props => (
+          <ArticleList
+            {...props}
+            search={search}
+          />
+        )} />
         <PrivateRoute path="/user/:id" component={UserDashboard} />
         <Route path="/Login" component={LoginForm} />
         <Route path="/SignUp" component={SignUpForm} />
       </div>
+
     </div>
   );
 }
