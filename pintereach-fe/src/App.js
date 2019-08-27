@@ -5,10 +5,7 @@ import Header from './components/Header';
 import MainContainer from './components/MainContainer'
 
 function App() {
-  const [search, setSearch] = useState({
-    queryType: "",
-    query: ""
-  })
+  const [search, setSearch] = useState("")
   return (
     <div className="App">
       <Header search={search} setSearch={setSearch}/>

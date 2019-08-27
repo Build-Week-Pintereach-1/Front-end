@@ -23,15 +23,18 @@ function SearchForm ({search, setSearch}) {
         console.log(tempSearch)
         
     }
-
-    /**
-     * everything
-     * title
-     * author
-     * abstract
-     * journal
-     * 
-     */
+    
+     /**
+      * @function assembleQuery
+      * 
+      * This function takes in the tempSearch object and returns a query string for the API.
+      * 
+      * @param {e} event for event.preventDefault()
+      * 
+      * the nested map method:
+      * @param {array, index} the item and its index in the array from Object.entries(tempSearch)
+      * 
+      */
 
     const assembleQuery = (e) => {
         e.preventDefault()
@@ -41,18 +44,26 @@ function SearchForm ({search, setSearch}) {
         const queryArray = Object.entries(tempSearch)
 
         const newArray = queryArray
-            .map(arr => {
-                if (arr[1]) {
-                    return `${arr[0]}: ${arr[1]}`
+            .map((arr, index) => {
+
+                if ((index === queryArray.length-1) && arr[1]) {
+                    console.log("condition 1 called!", arr)
+                    return `${arr[0]}:"${arr[1]}`
+                } else if (arr[1]) {
+                    console.log("condition 2 called!", arr)
+                    return `${arr[0]}:"${arr[1]}" AND `
                 } else {
-                return 
+                    console.log("condition 3 called!", arr)
+                    return
                 }
             })
             .filter(arr => {
                 return !arr === false
             })
+            .join('')
 
-        console.log("after map", newArray)
+        console.log(newArray)
+        setSearch(newArray)
         
     }
 
