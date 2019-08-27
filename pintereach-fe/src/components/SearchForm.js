@@ -1,4 +1,13 @@
 import React, { useState } from 'react'
+import styled from 'styled-components'
+
+const AdvOptions = styled.div`
+    width: 100%;
+    background-color: blue;
+    color: red;
+    display: flex;
+
+`;
 
 function SearchForm ({search, setSearch}) {
     const [advSearch, setAdvSearch] = useState(false)
@@ -74,12 +83,10 @@ function SearchForm ({search, setSearch}) {
                 value={tempSearch.everything}
                 onChange={handleChange}></input>
                 <button type="submit">Search</button>
-            <br/>
-            <br/>
-            <button onClick={setAdv}> Advanced Search </button>
+            <button onClick={setAdv}> Advanced Search Options</button>
         
             {advSearch && 
-            <React.Fragment>
+            <AdvOptions>
             <label htmlFor="title">Title</label>
             <input
                 type="text"
@@ -115,7 +122,7 @@ function SearchForm ({search, setSearch}) {
                 placeholder="Search abstracts"
                 value={tempSearch.abstract}
                 onChange={handleChange}></input>
-            </React.Fragment>
+            </AdvOptions>
             }
         </form>
     )
