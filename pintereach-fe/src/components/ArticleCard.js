@@ -10,11 +10,7 @@ export default function ArticleCard({ article }) {
       <h3>{journal}</h3>
       <div className='article-authors'>
         Author(s):
-          {author_display.map(author => (
-          <ul key = {author} >
-          <li>{author}</li>
-          </ul>
-          ))}
+          {author_display}
       </div>
       <a href={`http://doi.org/${id}`} target='_blank'>View Article</a>
       <p>{abstract}</p>
