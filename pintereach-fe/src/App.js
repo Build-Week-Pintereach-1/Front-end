@@ -6,6 +6,7 @@ import Header from './components/Header';
 import MainContainer from './components/MainContainer'
 import LoginForm from "./components/Login";
 import SignUpForm from "./components/SignUp";
+import ArticleList from "./components/ArticleList";
 
 function App() {
   const [search, setSearch] = useState("")

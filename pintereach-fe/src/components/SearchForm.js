@@ -54,7 +54,7 @@ function SearchForm ({search, setSearch}) {
                     return `${arr[0]}:"${arr[1]}" AND `
                 } else {
                     console.log("condition 3 called!", arr)
-                    return
+                    return 
                 }
             })
             .filter(arr => {
@@ -62,7 +62,7 @@ function SearchForm ({search, setSearch}) {
             })
             .join('')
 
-        console.log(newArray)
+        console.log("new Array: ", newArray)
         setSearch(newArray)
         
     }
