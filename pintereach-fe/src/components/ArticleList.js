@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import ArticleCard from './ArticleCard';
 
+<<<<<<< HEAD
 export default function ArticleList({ search, setSearch }) {
     const [article, setArticle] = useState([]);
  
@@ -9,6 +10,10 @@ export default function ArticleList({ search, setSearch }) {
     // Set the field to search, abstract is just an example   
     //const [query, setQuery] = useState('biology');
     //Set the search term, biology is just an example
+=======
+function ArticleList({search}) {
+    const [article, setArticle] = useState([]);
+>>>>>>> aba21a007263bae2731eeeea68431917b284dcfc
 
     useEffect(() => {
 
@@ -26,6 +31,14 @@ export default function ArticleList({ search, setSearch }) {
   
     return (
       <section className="article-list">
+<<<<<<< HEAD
+=======
+        <button onClick={() => console.log("button 1")}>Test Search Type</button>
+         //This button changes the 'type' field in the axios get. It will be changed to a drop down.
+
+        <button onClick={() => console.log("button 2")}>Test Seach Query</button>
+          //This button changes the 'search' field in the axios get. It will be changed to a string input.
+>>>>>>> aba21a007263bae2731eeeea68431917b284dcfc
 
           {article.map(article => {
             return <ArticleCard key= {article.id} article = {article}/>;
@@ -33,5 +46,4 @@ export default function ArticleList({ search, setSearch }) {
       </section>
     );
 }
-
-
+export default ArticleList
