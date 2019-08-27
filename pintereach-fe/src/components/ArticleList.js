@@ -12,10 +12,10 @@ export default function ArticleList() {
     useEffect(() => {
 
       axios
-      .get(`http://api.plos.org/search?q=${type}:${query}&api_key=z2S-nFcgkr5BxkxKRb2v`)
+      .get(`https://cors-anywhere.herokuapp.com/http://api.plos.org/search?q=${type}:${query}&api_key=z2S-nFcgkr5BxkxKRb2v`)
       .then(response => {
-        console.log(response.data.data);
-        setArticle(response.data.data);
+        console.log(response.data.response.docs);
+        setArticle(response.data.response.docs);
       })
       .catch(error => {
         console.error('Server Error', error);
@@ -25,6 +25,12 @@ export default function ArticleList() {
   
     return (
       <section className="article-list">
+        <button onClick={() => setType("id")}>Test Search Type</button>
+         //This button changes the 'type' field in the axios get. It will be changed to a drop down.
+
+        <button onClick={() => setQuery("physics")}>Test Seach Query</button>
+          //This button changes the 'search' field in the axios get. It will be changed to a string input.
+
           {article.map(article => {
             return <ArticleCard key= {article.id} article = {article}/>;
           })}
