@@ -11,17 +11,9 @@ function App() {
   return (
     <div className="App">
      
-<<<<<<< HEAD
-      <Header search={search} setSearch={setSearch} />
-      <MainContainer>
-       <ArticleList />
-      </ MainContainer>
-    
-=======
       <Header search={search} setSearch={setSearch}/>
       <ArticleList search={search}/>
 
->>>>>>> aba21a007263bae2731eeeea68431917b284dcfc
     </div>
   );
 }
