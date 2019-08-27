@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 
@@ -8,9 +8,10 @@ import LoginForm from "./components/Login";
 import SignUpForm from "./components/SignUp";
 
 function App() {
+  const [search, setSearch] = useState("")
   return (
     <div className="App">
-      <Header />
+      <Header search={search} setSearch={setSearch}/>
       <MainContainer />
       <LoginForm />
       <SignUpForm />
