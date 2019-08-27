@@ -12,8 +12,8 @@ function App() {
      
       <Header search={search} setSearch={setSearch}/>
       <MainContainer>
-      <ArticleList />
-      <MainContainer />
+        <ArticleList />
+      </MainContainer>
 
     </div>
   );
