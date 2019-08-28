@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import './App.css';
+import './index.css';
 
 import Header from './components/Header';
 import MainContainer from './components/MainContainer'
@@ -9,6 +9,7 @@ import SignUpForm from "./components/SignUp";
 import ArticleList from "./components/ArticleList";
 import UserDashboard from './components/UserDashboard';
 import PrivateRoute from "./components/PrivateRoute";
+import SavedCard from './components/SavedCard';
 
 function App() {
   const [search, setSearch] = useState("")
@@ -27,7 +28,7 @@ function App() {
         <Route path="/Login" component={LoginForm} />
         <Route path="/SignUp" component={SignUpForm} />
       </div>
-
+         
     </div>
   );
 }
