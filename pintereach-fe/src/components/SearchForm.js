@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { BrowserRouter as Router, Link } from 'react-router-dom'
 
 import { Colors } from './StyleVariables'
 
@@ -84,11 +85,22 @@ const SearchBtn = styled.button`
     }
 `;
 
+const redirect = () => {
+    if (window.location.pathname !== "/") {
+      return window.location = "/"  
+    }
+    console.log("window location" , window.location)
+}
+
+
+
+
+
 
 function SearchForm ({setSearch}) {
     const [advSearch, setAdvSearch] = useState(false)
     const [tempSearch, setTempSearch] = useState({
-        everything: "bananas",
+        everything: "",
         title: "",
         author: "",
         journal: "",
@@ -146,6 +158,7 @@ function SearchForm ({setSearch}) {
 
         console.log("new Array: ", newArray)
         setSearch(newArray)
+        redirect()
     }
 
     return (
@@ -159,7 +172,11 @@ function SearchForm ({setSearch}) {
                         placeholder="Search everything"
                         value={tempSearch.everything}
                         onChange={handleChange}></Input>
-                    <SearchBtn type="submit">Search</SearchBtn>
+                    
+                        <SearchBtn type="submit">Search</SearchBtn>
+                    
+                    
+                        
                 </div>
                 
 

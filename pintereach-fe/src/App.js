@@ -13,11 +13,14 @@ import SavedCard from './components/SavedCard';
 import DisplayArticleBoard from './components/DisplayArticleBoard';
 
 function App() {
-  const [search, setSearch] = useState("everything: bananas")
+  const [search, setSearch] = useState("")
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token") || false)
   return (
     <div className="App">
-      <Header search={search} setSearch={setSearch} />
+  {/*<Header search={search} setSearch={setSearch} />*/}
+      <Route path="/" render={props => (
+        <Header search={search} setSearch={setSearch} {...props} />
+      )} />
       <div>
         <Route exact path="/" render = {props => (
           <ArticleList

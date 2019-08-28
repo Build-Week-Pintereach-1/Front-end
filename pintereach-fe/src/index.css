@@ -109,9 +109,9 @@ h3{
   background-color: white;
 }
 
-
-.App {
-  background-image: url('./assets/images/Tortoise-Shell.svg')
+body {
+  background-image: url('./assets/images/Tortoise-Shell.svg');
+  height: 100%;
 }
 
 .article-card a{
