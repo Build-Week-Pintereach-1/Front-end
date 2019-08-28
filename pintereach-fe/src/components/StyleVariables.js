@@ -27,8 +27,9 @@ export const Colors = {
         blue: "rgba(109, 207, 246, 1)"
     },
     icon: {
-        yellow: "rgba(242, 238, 135, 1)",
-        blue: "rgba(0, 166, 165, 1)",
-        green: "rgba(163, 242, 135, 1)",
+        orange: "rgba(255, 196, 138, 1)",
+        yellow: "rgba(255, 246, 140, 1)",
+        green: "rgba(160, 235, 160, 1)",
+        blue: "rgba(158, 236, 255, 1)",
     }
   };
