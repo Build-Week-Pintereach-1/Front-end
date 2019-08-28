@@ -155,3 +155,8 @@ h3{
   padding: 1rem 0;
   font-style: italic;
 }
+
+.login-error{
+  color: red;
+  size: .75rem;
+}

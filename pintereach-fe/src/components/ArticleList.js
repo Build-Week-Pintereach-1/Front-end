@@ -27,4 +27,4 @@ function ArticleList({search}) {
       </section>
     );
 }
-export default ArticleList
+export default ArticleList;
