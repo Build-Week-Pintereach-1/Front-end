@@ -1,13 +1,87 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-const AdvOptions = styled.div`
-    width: 100%;
-    background-color: blue;
-    color: red;
+import { Colors } from './StyleVariables'
+
+const AdvForm = styled.form`
+    width: 50%;
+    max-width: 55rem;
+    min-width: 51rem;
     display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-top: 1rem;
+    color: white;
+`;
+
+const FormDivider = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+`;
+
+const AdvOptions = styled.div`
+    
+    background-color: ${Colors.primary.midLight};
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    position: absolute;
+    z-index: -1;
+    top: 4.5rem;
+    margin-left: 4rem;
+    
+`;
+
+const Input = styled.input`
+    padding: .75rem;
+    padding-left: 1.5rem;
+    width: 25rem;
+    border: none;
+    font-size: 1rem;
+    border-radius: 1.5rem 0 0 1.5rem;
+    margin-left: 1rem;
+    box-shadow: 1px 1px 2px ${Colors.primary.midDark};
 
 `;
+
+const AdvSearchBtn = styled.button`
+    background: none;
+    border: 1px ${Colors.primary.mid} solid;
+    border-radius: 1.5rem;
+    padding: .75rem 1rem;
+    color: ${Colors.primary.light};
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color .4s ease;
+    margin-left: 1rem;
+
+    &:hover {
+        background-color: rgba(140, 180, 215, .4);
+        box-shadow: 0px 0px 3px ${Colors.primary.light};
+        transition: background-color .2s ease;
+        color: white;
+    }
+`;
+const SearchBtn = styled.button`
+    background-color: ${Colors.secondary.persimmonLight};
+    border: none;
+    border-radius: 0 1.5rem 1.5rem 0;
+    padding: .75rem 1rem;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color .4s ease;
+    box-shadow: 1px 1px 2px ${Colors.primary.midDark};
+
+    &:hover {
+        background-color: ${Colors.secondary.persimmon};
+        background-image: linear-gradient(120deg, ${Colors.secondary.yellowDark} 60%, ${Colors.secondary.yellow} 20% );
+        transition: background-color .2s ease;
+
+    }
+`;
+
 
 function SearchForm ({search, setSearch}) {
     const [advSearch, setAdvSearch] = useState(false)
@@ -73,17 +147,23 @@ function SearchForm ({search, setSearch}) {
     }
 
     return (
-        <form onSubmit={assembleQuery}>
-            <label htmlFor="query">Search for an article</label>
-            <input
-                type="text"
-                id="query"
-                name="everything"
-                placeholder="Search everything"
-                value={tempSearch.everything}
-                onChange={handleChange}></input>
-                <button type="submit">Search</button>
-            <button onClick={setAdv}> Advanced Search Options</button>
+        <AdvForm onSubmit={assembleQuery}>
+            <FormDivider>
+                <div>
+                    <Input
+                        type="text"
+                        id="query"
+                        name="everything"
+                        placeholder="Search everything"
+                        value={tempSearch.everything}
+                        onChange={handleChange}></Input>
+                    <SearchBtn type="submit">Search</SearchBtn>
+                </div>
+                
+
+                <AdvSearchBtn onClick={setAdv}>Search Options</AdvSearchBtn>
+            </FormDivider>
+            
         
             {advSearch && 
             <AdvOptions>
@@ -124,7 +204,7 @@ function SearchForm ({search, setSearch}) {
                 onChange={handleChange}></input>
             </AdvOptions>
             }
-        </form>
+        </AdvForm>
     )
 }
 
