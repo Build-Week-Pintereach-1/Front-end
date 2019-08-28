@@ -26,7 +26,9 @@ function App() {
           />
         )} />
         <PrivateRoute path="/user/:id" component={UserDashboard} />
-        <Route path="/Login" component={LoginForm} />
+        <Route path="/Login" render = {props => (
+          <LoginForm {...props} /> )}
+        />
         <Route path="/SignUp" component={SignUpForm} />
       </div>
       {/* <DisplayArticleBoard /> */} 
