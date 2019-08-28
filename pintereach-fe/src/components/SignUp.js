@@ -102,7 +102,9 @@ const SignUpForm = (props) => {
                 localStorage.setItem("token", res.data.tokenThing)
                 routeToArticleList()
             })
+            
             .catch(err => console.log("Error signing up: ", err.response))
+            
         } 
         else console.log("error signing up", inputs)
     }
