@@ -17,7 +17,7 @@ export default function ArticleCard({ article }) {
       <a href={`http://doi.org/${id}`} target='_blank'>View Article</a>
       <p className="article-abstract">{abstract}</p>   
       </div>
-      <button className= "save-button" onClick={/*Save card data to backend*/} >
+      <button className= "save-button" onClick={()=>console.log("clicked")} >
         Save Article
       </button>
   </div>

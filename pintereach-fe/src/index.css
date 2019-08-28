@@ -111,6 +111,7 @@ h3{
 }
 
 
+
 .article-card:nth-of-type(2n) {
   border-top: 2rem solid rgba(124, 197, 118, 1);
 }

@@ -88,6 +88,6 @@ const FormikSavedCard = withFormik({
             console.log(error);
         });
     }
-})(SavedCard);
+})(SavedCardForm);
 
-export default FormikSavedCardForm;
+export default FormikSavedCard;

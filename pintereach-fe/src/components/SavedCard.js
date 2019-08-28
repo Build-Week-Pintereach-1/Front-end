@@ -5,7 +5,7 @@ import SavedCardForm from './SaveCardForm';
 import { useEffect, useState } from 'react';
 
 const SavedCard = (props) => {
-    const [SavedCard, setSavedCard] = useState({});
+    const [savedCard, setSavedCard] = useState({});
 
     useEffect(() => {
         axios
@@ -21,7 +21,7 @@ const SavedCard = (props) => {
 
     const saveArticle = () => {
         const addToArticleBoard = { addToArticleBoard };
-        addToArticleBoard(savedCard)
+        addToArticleBoard(savedCard);
       }
 
     const { id, title, authors, abstract } = savedCard;
@@ -30,6 +30,7 @@ const SavedCard = (props) => {
         <div>
         <ArticleCard article = {savedCard}/>
         <SavedCardForm />
+        </div>
     );
 }
 
