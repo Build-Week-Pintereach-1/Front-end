@@ -64,7 +64,7 @@ const SavedCardForm = ( { errors, touched, values, status }) => {
         </div>
     );
 };
-const FormikSavedCard = withFormik({
+const FormikSavedCardForm = withFormik({
     mapPropsToValues:({ notes, tag }) => {
         return {
             notes: notes || '',
@@ -90,4 +90,4 @@ const FormikSavedCard = withFormik({
     }
 })(SavedCardForm);
 
-export default FormikSavedCard;
+export default FormikSavedCardForm;
