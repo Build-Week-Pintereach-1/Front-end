@@ -1,0 +1,9 @@
+Logo Font Type => Manjari (Bold)
+
+Primary Color => Persimmon
+
+Primary Color Code => #FF6347, RGB(255, 99, 71), rgba(255, 99, 71, 1)
+
+Secondary Color => Big Stone
+
+Secondary Color Code => #173742, rgb(23, 55, 66), rgba(23, 55, 66, 1)

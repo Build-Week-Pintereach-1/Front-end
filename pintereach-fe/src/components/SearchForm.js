@@ -34,45 +34,47 @@ const AdvOptions = styled.div`
 `;
 
 const Input = styled.input`
-    padding: .75rem;
+    padding: .73rem;
     padding-left: 1.5rem;
     width: 25rem;
     border: none;
     font-size: 1rem;
-    border-radius: 1.5rem 0 0 1.5rem;
+    border-radius: .3rem 0 0 .3rem;
     margin-left: 1rem;
-    box-shadow: 1px 1px 2px ${Colors.primary.midDark};
-
+    border-top: 1px solid ${Colors.primary.midLight};
+    border-left: 1px solid ${Colors.primary.midLight};
+    border-bottom: 1px solid ${Colors.primary.midLight};
 `;
 
 const AdvSearchBtn = styled.button`
     background: none;
-    border: 1px ${Colors.primary.mid} solid;
-    border-radius: 1.5rem;
+    border: none
+    border-radius: .3rem;
     padding: .75rem 1rem;
-    color: ${Colors.primary.light};
+    color: ${Colors.primary.dark};
     cursor: pointer;
     font-size: 1rem;
     transition: background-color .4s ease;
     margin-left: 1rem;
+    font-weight: 600;
+
 
     &:hover {
-        background-color: rgba(140, 180, 215, .4);
+        background-color: ${Colors.primary.midLight};
         box-shadow: 0px 0px 3px ${Colors.primary.light};
         transition: background-color .2s ease;
-        color: white;
     }
 `;
 const SearchBtn = styled.button`
-    background-color: ${Colors.secondary.persimmonLight};
+    background-color: ${Colors.primary.dark};
     border: none;
-    border-radius: 0 1.5rem 1.5rem 0;
+    border-radius: 0 .3rem .3rem 0;
     padding: .75rem 1rem;
     color: white;
     cursor: pointer;
     font-size: 1rem;
+    font-weight: 500;
     transition: background-color .4s ease;
-    box-shadow: 1px 1px 2px ${Colors.primary.midDark};
 
     &:hover {
         background-color: ${Colors.secondary.persimmon};
@@ -83,10 +85,10 @@ const SearchBtn = styled.button`
 `;
 
 
-function SearchForm ({search, setSearch}) {
+function SearchForm ({setSearch}) {
     const [advSearch, setAdvSearch] = useState(false)
     const [tempSearch, setTempSearch] = useState({
-        everything: "",
+        everything: "bananas",
         title: "",
         author: "",
         journal: "",
