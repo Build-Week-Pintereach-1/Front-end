@@ -21,11 +21,14 @@ export default function ArticleCard({ article }) {
   abbreviatedAbstract = abbreviatedAbstract + ' . . .';
   //////////
 
+
+  // strips ugly <i></> tags from appearing in the title display
+  let strippedTitle = title_display.replace(/(<([^>]+)>)/ig,"");
   
   return (
     <div className= 'article-card' key="id" >
       <div className='card-content'>
-      <h2>{title_display}</h2>
+      <h2>{strippedTitle}</h2>
       <h3>{journal}</h3>
       <div className='article-authors'>
         Author(s):
