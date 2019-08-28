@@ -29,7 +29,7 @@ function App() {
         <Route path="/Login" component={LoginForm} />
         <Route path="/SignUp" component={SignUpForm} />
       </div>
-      <DisplayArticleBoard />
+      {/* <DisplayArticleBoard /> */}
     </div>
   );
 }
