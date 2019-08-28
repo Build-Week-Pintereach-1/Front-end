@@ -5,27 +5,6 @@ import { Form, Field, withFormik } from "formik";
 import * as yup from 'yup';
 import axios from 'axios';
 
-const fake = [{
-    abstract: ["This article uses data from Thomson Reute… data and draw conclusions for themselves."],
-    author_display:[
-         "Paul Oldham",
-        "Stephen Hall",   
-        "Geoff Burton"
-    ],
-    id: "10.1371/journal.pone.0034368",
-    journal: "PLoS ONE",
-    title_display: "Synthetic Biology: Mapping the Scientific Landscape"
-    }, {
-        abstract: ["Systems biology is a discipline that studies biol…de disproportionate contributions to this field."],
-        author_display: [
-            "Yawen Zou",
-            "Manfred D. Laubichler"
-        ],
-    id: "10.1371/journal.pone.0200929",
-    journal: "PLOS ONE",
-    title_display: "From systems to biology: A computational analysis of the rese"
-    }]
-
 const SavedCardForm = ( { errors, touched, values, status }) => {
 
     const [comment, setComment] = useState([]);
@@ -36,8 +15,7 @@ const SavedCardForm = ( { errors, touched, values, status }) => {
     }, [status]);
 
     return(
-        <div className="saved-card">
-        <ArticleCard article = {fake} />
+        <div className="saved-card-form">
             <Form>
             {touched.notes && errors.notes && <p className="error">{errors.notes}</p>}
             <Field
@@ -64,7 +42,7 @@ const SavedCardForm = ( { errors, touched, values, status }) => {
         </div>
     );
 };
-const FormikSavedCard = withFormik({
+const FormikSavedCardForm = withFormik({
     mapPropsToValues:({ notes, tag }) => {
         return {
             notes: notes || '',
@@ -88,6 +66,6 @@ const FormikSavedCard = withFormik({
             console.log(error);
         });
     }
-})(SavedCard);
+})(SavedCardForm);
 
 export default FormikSavedCardForm;

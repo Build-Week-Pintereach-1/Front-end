@@ -9,7 +9,6 @@ import SignUpForm from "./components/SignUp";
 import ArticleList from "./components/ArticleList";
 import UserDashboard from './components/UserDashboard';
 import PrivateRoute from "./components/PrivateRoute";
-import SavedCard from './components/SavedCard';
 import DisplayArticleBoard from './components/DisplayArticleBoard';
 
 function App() {
@@ -29,7 +28,7 @@ function App() {
         <Route path="/Login" component={LoginForm} />
         <Route path="/SignUp" component={SignUpForm} />
       </div>
-      <DisplayArticleBoard />
+         
     </div>
   );
 }

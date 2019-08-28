@@ -1,7 +1,10 @@
 import React from "react";
+import Modali, { useModali } from 'modali';
+import SavedCard from "./SavedCard";
 
 export default function ArticleCard({ article }) {
 
+  const [modal, toggleModal] = useModali();
 
   const { id, abstract, title_display, author_display, journal } = article;
   
@@ -17,9 +20,13 @@ export default function ArticleCard({ article }) {
       <a href={`http://doi.org/${id}`} target='_blank'>View Article</a>
       <p className="article-abstract">{abstract}</p>   
       </div>
-      <button className= "save-button" onClick={/*Save card data to backend*/} >
+      /*This button should maybe post the article to our backend too */
+      <button className= "save-button" onClick={toggleModal} >
         Save Article
       </button>
+      <Modali.Modal {...modal}>
+       <SavedCard />
+      </Modali.Modal>
   </div>
   );
 }
