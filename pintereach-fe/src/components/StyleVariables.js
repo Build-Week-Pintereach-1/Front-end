@@ -15,8 +15,8 @@ export const Colors = {
     primary: {
         dark: "rgba(23, 55, 66, 1)",
         midDark: "rgba(18, 117, 168, 1)",
-        midLight: "rgba(36, 160, 237, 1)",
-        light: "rgba(174, 207, 224, 1)",
+        midLight: "rgba(174, 207, 224, 1)",
+        light: "rgba(230, 243, 250, 1)",
     },
     secondary: {
         yellow: "rgba(249, 224, 53, 1)",
