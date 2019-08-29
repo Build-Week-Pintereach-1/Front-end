@@ -20,7 +20,6 @@ export default function ArticleCard({ article }) {
       <a href={`http://doi.org/${id}`} target='_blank'>View Article</a>
       <p className="article-abstract">{abstract}</p>   
       </div>
-      /*This button should maybe post the article to our backend too */
       <div>
       <button className= "save-button" onClick={toggleModal} >
         Save Article
