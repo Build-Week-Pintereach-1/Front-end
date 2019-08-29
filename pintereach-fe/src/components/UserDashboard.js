@@ -3,10 +3,10 @@ import axios from "axios";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 const UserDashboard = (props) => {
-    const userID = localStorage.getItem("userID")
+    // const userID = localStorage.getItem("userID")
     const getData = () => {
         axiosWithAuth()
-        .get(`https://nameless-lake-75129.herokuapp.com/articles/users/${userID}`)
+        .get(`https://nameless-lake-75129.herokuapp.com/articles/users/1`)
         .then(res => console.log("GET user arts :", res))
         .catch(err => console.log("GET ERROR!", err))
     }

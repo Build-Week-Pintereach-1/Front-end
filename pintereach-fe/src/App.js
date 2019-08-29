@@ -14,6 +14,9 @@ import DisplayArticleBoard from './components/DisplayArticleBoard';
 function App() {
   const [search, setSearch] = useState("")
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token") || false)
+  const [userID, setUserID] = useState(null)
+
+
   return (
     <div className="App">
   {/*<Header search={search} setSearch={setSearch} />*/}
@@ -27,9 +30,9 @@ function App() {
             search={search}
           />
         )} />
-        <PrivateRoute path="/user/:id" component={UserDashboard} />
+        <PrivateRoute path="/user/:id" component={UserDashboard} userID={userID}/>
         <Route path="/Login" render = {props => (
-          <LoginForm {...props} /> )}
+          <LoginForm {...props} userID={userID} setUserID={setUserID}/> )}
         />
         <Route path="/SignUp" component={SignUpForm} />
       </div>

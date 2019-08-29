@@ -29,6 +29,8 @@ const LogoImg = styled.img`
         top: 1rem;
 `;
 
+const userID = localStorage.getItem("userID")
+
 function Nav ({search, setSearch}) {
     return (
         <StyledNav>
@@ -36,6 +38,7 @@ function Nav ({search, setSearch}) {
             <SearchForm search={search} setSearch={setSearch}/>
             <Link to="/Login">Sign in</Link>
             <Link to="/SignUp">Create account</Link>
+            <Link to={`/user/${userID}`} >My Boards </Link>
         </StyledNav>
     )
 }
