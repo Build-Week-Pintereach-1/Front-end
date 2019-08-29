@@ -4,30 +4,29 @@ import { Link } from 'react-router-dom'
 
 import { Colors } from './StyleVariables'
 import SearchForm from './SearchForm'
-import Icon from '../assets/images/pintereach-icon.png'
+import Icon from '../assets/images/pintereach-logo.png'
+
 
 const StyledNav = styled.nav`
     width: 100%;
     font-size: 1.3rem;
-    background-image: linear-gradient(135deg, 
-        ${Colors.primary.midDark} 36%, 
-        ${Colors.primary.mid} 35%, 
-        ${Colors.primary.mid} 37%, 
-        ${Colors.primary.midDark} 37%, 
-        ${Colors.primary.midDark} 38%, 
-        ${Colors.primary.mid} 38% );;
+    background-color: ${Colors.primary.light};
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: baseline;
     height: 5rem;
     padding: 0 2rem;
-    box-shadow: 2px 2px 3px ${Colors.primary.midDark};
-    position: relative;
+    box-shadow: 2px 2px 3px ${Colors.primary.midLight};
+    position: fixed;
+    top: 0;
     z-index: 1;
 `;
 
 const LogoImg = styled.img`
-        width: 3rem;
+        width: 11rem;
+        margin-left: 2rem;
+        position: relative;
+        top: 1rem;
 `;
 
 function Nav ({search, setSearch}) {

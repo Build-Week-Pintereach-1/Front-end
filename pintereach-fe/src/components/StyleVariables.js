@@ -13,11 +13,11 @@ const HeaderDiv = styled.div`
 
 export const Colors = {
     primary: {
-        dark: "rgba(4, 45, 80, 1)",
-        midDark: "rgba(18, 117, 168, 1)",
-        mid: "rgba(74, 165, 217, 1)",
-        midLight: "rgba(174, 207, 224, 1)",
-        light: "rgba(230, 243, 250, 1)",
+        dark: "rgba(23, 55, 66, 1)",
+        midDark: "rgba(45, 130, 165, 1)",
+        mid: "rgba(80, 180, 212, 1)",
+        midLight: "rgba(165, 218, 237, 1)",
+        light: "rgba(230, 245, 250, 1)",
     },
     secondary: {
         persimmon: "rgba(255, 99, 71, 1)",

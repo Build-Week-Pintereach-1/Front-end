@@ -84,5 +84,4 @@ const FormikSavedCardForm = withFormik({
     }
 })(SavedCardForm);
 
-
-export default FormikSavedCardForm;
+export default FormikSavedCard;

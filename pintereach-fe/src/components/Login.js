@@ -39,22 +39,21 @@ const LoginForm = (props) => {
         console.log("creds after handleChanges: ", creds)
     }
 
-    //***check and update route to landing page
-    const routeToLandingPg = () => {
-        props.history.push("/")
+    const routeToUserDashboard = () => {
+        props.history.push("/UserDashboard")
     }
 
-    //***Update API address ad
     const handleSubmit = e => {
         e.preventDefault();
-        console.log("Login un + pw: ", creds.username, creds.password)
-        // axios
-        //     .post("", creds)
-        //     .then(res => {
-        //         localStorage.setItem("token", res.data.payload)
-        //         routeToLandingPg()
-        //     })
-        //     .catch(err => console.log("Error logging in: ", err.response))
+        // console.log("Login un + pw: ", creds.username, creds.password)
+        axios
+            .post("https://nameless-lake-75129.herokuapp.com/login", creds)
+            .then(res => {
+                console.log("Login res: ", res)
+                localStorage.setItem("token", res.data.tokenThing)
+                routeToUserDashboard()
+            })
+            .catch(err => console.log("Error logging in: ", err.response))
     }
 
     return (

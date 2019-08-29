@@ -45,7 +45,7 @@ export const SavedCard = (props) => {
 
     const saveArticle = () => {
         const addToArticleBoard = { addToArticleBoard };
-        addToArticleBoard(savedCard)
+        addToArticleBoard(savedCard);
       }
 
     return (
