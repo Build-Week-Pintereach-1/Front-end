@@ -88,7 +88,7 @@ const SearchBtn = styled.button`
 function SearchForm ({setSearch}) {
     const [advSearch, setAdvSearch] = useState(false)
     const [tempSearch, setTempSearch] = useState({
-        everything: "bananas",
+        everything: "physics",
         title: "",
         author: "",
         journal: "",
