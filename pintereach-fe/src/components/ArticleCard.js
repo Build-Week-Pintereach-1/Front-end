@@ -32,7 +32,7 @@ export default function ArticleCard({ article }) {
     <div className= 'article-card' key="id" >
       <div className='card-content'>
       <h2>{strippedTitle}</h2>
-      <h3>{journal}</h3>
+      <h3><i class="fas fa-book"></i>  {journal}</h3>
       <div className='article-authors'>
         Author(s):
           {author_display}
@@ -40,7 +40,7 @@ export default function ArticleCard({ article }) {
       <a href={`http://doi.org/${id}`} target='_blank'>View Article</a>
       <p className="article-abstract">{abbreviatedAbstract}</p>   
       </div>
-      <div>
+      <div classname= "button-container">
       <button className= "save-button" onClick={toggleModal} >
         Save Article
       </button>

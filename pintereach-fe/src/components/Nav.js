@@ -19,7 +19,7 @@ const StyledNav = styled.nav`
     box-shadow: 2px 2px 3px ${Colors.primary.midLight};
     position: fixed;
     top: 0;
-    z-index: 1;
+    z-index: 999;
 `;
 
 const LogoImg = styled.img`
