@@ -7,21 +7,19 @@
 
      const [boardContent, setBoardContent] = useState([]);
     
+     const userID = localStorage.getItem('userID');
    
      useEffect(() => {
     
 
-     axios
-     .get(`https://nameless-lake-75129.herokuapp.com/articles/users/8`)
-     .then((response) => {
-     console.log(response.length);
-     const dataArray = response.data
-    let boards = _.groupBy(dataArray, function(item){
-    return item.employee;
- });
- }
-   })
- }, [])
+        axios
+        .get(`https://nameless-lake-75129.herokuapp.com/articles/users/${userID}`)
+        .then((response) => {
+            console.log(response.length);
+             const dataArray = response.data
+        })
+   
+    }, [])
 
      return(
          <div className= "article-board">

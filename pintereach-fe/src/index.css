@@ -129,11 +129,6 @@ margin-top: 1rem;
   transition: background-color .2s ease;
 }
 
-<<<<<<< HEAD
- .article-card:nth-of-type(4n) {
-border-top: 2rem solid orange;
-} 
-=======
 .article-card a{
   text-decoration: none;
   color: rgba(255, 99, 71, 1);
@@ -142,15 +137,10 @@ border-top: 2rem solid orange;
   font-weight: 600;
   margin-bottom: 1rem;
 }
->>>>>>> d0f4282460a860ae1a1f92f3e0f86cdd4d0c4ad6
 
 /* 
 /* colors for article links */
-<<<<<<< HEAD
- .article-card a:nth-child(1){
-=======
 /* .article-list a:nth-child(1){
->>>>>>> d0f4282460a860ae1a1f92f3e0f86cdd4d0c4ad6
   text-decoration: none;
   border-bottom: 2px solid rgba(249, 224, 53, 1);
 }
@@ -247,4 +237,8 @@ padding: .5rem;
 
 .saved-card-form button:hover{
   background-color: rgba(255, 145, 50, 1);
+}
+
+.bold-title{
+  font-weight: 700;
 }
