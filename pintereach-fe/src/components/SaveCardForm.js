@@ -69,7 +69,7 @@ const FormikSavedCardForm = withFormik({
             "board": values.board
         }
 
-        axios.post('https://nameless-lake-751239.herokuapp.com', submitMe)
+        axios.post('https://nameless-lake-751239.herokuapp.com/addarticle', submitMe)
         .then(response => {
              console.log(response)
              setComment(response);
@@ -84,4 +84,4 @@ const FormikSavedCardForm = withFormik({
     }
 })(SavedCardForm);
 
-export default FormikSavedCard;
+export default FormikSavedCardForm;
