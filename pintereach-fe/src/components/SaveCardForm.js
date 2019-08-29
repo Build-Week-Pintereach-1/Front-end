@@ -5,28 +5,11 @@ import { Form, Field, withFormik } from "formik";
 import * as yup from 'yup';
 import axios from 'axios';
 
-const fake = [{
-    abstract: ["This article uses data from Thomson Reute… data and draw conclusions for themselves."],
-    author_display:[
-         "Paul Oldham",
-        "Stephen Hall",   
-        "Geoff Burton"
-    ],
-    id: "10.1371/journal.pone.0034368",
-    journal: "PLoS ONE",
-    title_display: "Synthetic Biology: Mapping the Scientific Landscape"
-    }, {
-        abstract: ["Systems biology is a discipline that studies biol…de disproportionate contributions to this field."],
-        author_display: [
-            "Yawen Zou",
-            "Manfred D. Laubichler"
-        ],
-    id: "10.1371/journal.pone.0200929",
-    journal: "PLOS ONE",
-    title_display: "From systems to biology: A computational analysis of the rese"
-    }]
+import { saveProps } from './SavedCard'
 
-const SavedCardForm = ( { errors, touched, values, status }) => {
+
+
+const SavedCardForm = ( { errors, touched, values, status, saveProps }) => {
 
     const [comment, setComment] = useState([]);
     useEffect(() => {
@@ -35,9 +18,9 @@ const SavedCardForm = ( { errors, touched, values, status }) => {
       }
     }, [status]);
 
+    
     return(
-        <div className="saved-card">
-        <ArticleCard article = {fake} />
+        <div className="saved-card-form">
             <Form>
             {touched.notes && errors.notes && <p className="error">{errors.notes}</p>}
             <Field
@@ -47,8 +30,8 @@ const SavedCardForm = ( { errors, touched, values, status }) => {
             />
              <Field
                 type="text"
-                name="tag"
-                placeholder="Tags"
+                name="board"
+                placeholder="Board Title"
             />
         <button type="submit">Save</button>
                 </Form>
@@ -56,7 +39,7 @@ const SavedCardForm = ( { errors, touched, values, status }) => {
             {comment.map(comment => (
                 <ul>
                     <li>Notes: {comment.data.notes} </li>
-                    <li>Tags: {Comment.data.tag} </li>
+                    <li>Board: {Comment.data.board} </li>
                 </ul>
             ))}
             
@@ -64,29 +47,45 @@ const SavedCardForm = ( { errors, touched, values, status }) => {
         </div>
     );
 };
+<<<<<<< HEAD
 const FormikSavedCardForm = withFormik({
     mapPropsToValues:({ notes, tag }) => {
+=======
+
+const FormikSavedCardForm = withFormik({
+    mapPropsToValues:({ notes, board }) => {
+>>>>>>> bf576511b824c6d10d0ecd6ae058ed269c8d789e
         return {
             notes: notes || '',
-            tag: tag || '',
+            board: board || '',
         };
     },
     validationSchema: yup.object().shape({
         notes: yup.string(),
-        tag: yup.string()
-        .required('Add at least one tag')
+        board: yup.string()
+        .required('Add board name')
     }),
-    handleSubmit:(values, { resetForm, setComment }) => {
-        axios.post('https://reqres.in/', values)
-        //this will need to be changed to point to our backend
+    handleSubmit:(values, { resetForm, setComment}) => {
+        let submitMe = saveProps;
+        
+        submitMe = {
+            ...submitMe,
+            "comments": values.notes,
+            "board": values.board
+        }
+
+        axios.post('https://nameless-lake-751239.herokuapp.com/addarticle', submitMe)
         .then(response => {
-            console.log(response)
-            setComment(response);
-            resetForm();
-        })
-        .catch(error => {
+             console.log(response)
+             setComment(response);
+             resetForm();
+            
+         })
+         .catch(error => {
             console.log(error);
-        });
+         });
+        console.log(values)
+       console.log("I am a saved card!", submitMe)
     }
 })(SavedCardForm);
 

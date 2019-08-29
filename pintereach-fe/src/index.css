@@ -156,6 +156,9 @@ body {
   font-style: italic;
 }
 
+.card-content-saved{
+  padding:2.5rem ;
+}
 .login-error{
   color: red;
   size: .75rem;
