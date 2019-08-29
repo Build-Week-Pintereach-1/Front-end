@@ -196,6 +196,8 @@ nav{
   overflow-y: hidden;
 }
 
+.abstract-container 
+
 .card-content-saved{
   padding:2.5rem ;
   border-bottom: 1.2rem solid rgba(165, 218, 237, 1);
@@ -235,4 +237,8 @@ padding: .5rem;
 
 .saved-card-form button:hover{
   background-color: rgba(255, 145, 50, 1);
+}
+
+.searchDiv {
+  width: 100%;
 }
