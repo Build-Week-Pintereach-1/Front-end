@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './index.css';
-
+import SavedCard from './components/SavedCard'
 import Header from './components/Header';
 import MainContainer from './components/MainContainer'
 import LoginForm from "./components/Login";
@@ -9,7 +9,6 @@ import SignUpForm from "./components/SignUp";
 import ArticleList from "./components/ArticleList";
 import UserDashboard from './components/UserDashboard';
 import PrivateRoute from "./components/PrivateRoute";
-import SavedCard from './components/SavedCard';
 import DisplayArticleBoard from './components/DisplayArticleBoard';
 
 function App() {
@@ -31,7 +30,7 @@ function App() {
         />
         <Route path="/SignUp" component={SignUpForm} />
       </div>
-      {/* <DisplayArticleBoard /> */}
+         
     </div>
   );
 }

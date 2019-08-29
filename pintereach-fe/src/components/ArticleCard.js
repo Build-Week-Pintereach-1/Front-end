@@ -1,9 +1,12 @@
 import React from "react";
+import Modali, { useModali } from 'modali';
+import { SavedCard } from "./SavedCard";
 
 export default function ArticleCard({ article }) {
 
-  const { id, abstract, title_display, author_display, journal } = article;
+  const [modal, toggleModal] = useModali();
 
+  const { id, abstract, title_display, author_display, journal } = article;
   
   //////////
   // abbreviates abstract to the first three sentences...
@@ -37,9 +40,15 @@ export default function ArticleCard({ article }) {
       <a href={`http://doi.org/${id}`} target='_blank'>View Article</a>
       <p className="article-abstract">{abbreviatedAbstract}</p>   
       </div>
-      <button className= "save-button" onClick={()=>console.log("clicked")} >
+      /*This button should maybe post the article to our backend too */
+      <div>
+      <button className= "save-button" onClick={toggleModal} >
         Save Article
       </button>
+      </div>
+      <Modali.Modal {...modal}>
+      <SavedCard id = {id}/>
+      </Modali.Modal>
   </div>
   );
 }
