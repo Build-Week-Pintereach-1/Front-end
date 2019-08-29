@@ -10,6 +10,7 @@ import ArticleList from "./components/ArticleList";
 import UserDashboard from './components/UserDashboard';
 import PrivateRoute from "./components/PrivateRoute";
 import DisplayArticleBoard from './components/DisplayArticleBoard';
+import ArticleBoard from './components/ArticleBoard';
 
 function App() {
   const [search, setSearch] = useState("")
@@ -19,7 +20,10 @@ function App() {
 
   return (
     <div className="App">
-      <Header search={search} setSearch={setSearch} />
+  {/*<Header search={search} setSearch={setSearch} />*/}
+      <Route path="/" render={props => (
+        <Header search={search} setSearch={setSearch} {...props} />
+      )} />
       <div>
         <Route exact path="/" render = {props => (
           <ArticleList
@@ -33,8 +37,8 @@ function App() {
         />
         <Route path="/SignUp" component={SignUpForm} />
       </div>
-         
     </div>
+      
   );
 }
 

@@ -1,18 +1,22 @@
 import React, { useState }from "react";
 import axios from "axios";
 import axiosWithAuth from "../utils/axiosWithAuth";
+import DashCard from './DashCard';
+import StackGrid from "react-stack-grid";
 
 const UserDashboard = (props) => {
     // const userID = localStorage.getItem("userID")
+    const [userdashboard, setUserdashboard] = useState([]);
+
     const getData = () => {
         axiosWithAuth()
         .get(`https://nameless-lake-75129.herokuapp.com/articles/users/1`)
-        .then(res => console.log("GET user arts :", res))
+        .then(res => {console.log("GET user arts :", res.data)
+            setUserdashboard(res.data)})
         .catch(err => console.log("GET ERROR!", err))
     }
 
     // const [editedArticle, setEditedArticle] = useState({
-
     // })
 
     const editedArticle = {
@@ -51,15 +55,21 @@ const UserDashboard = (props) => {
             })
         }
     
-
     return(
-        <div>
-            <p> UserDashboard goes here </p>
-        <button onClick={getData}> Get Articles </button>
-        <button onClick={editArticle}> Edit this Article </button>
-        <button onClick={deleteArticle}> Delete this Article </button>
-        </div>
-
+        <section className="article-list">
+            <button onClick={getData}> Get Articles </button>
+            <StackGrid columnWidth={500}>
+                {userdashboard.map(userdashboard =>{
+                    return <DashCard 
+                        key={userdashboard.id} 
+                        userdashboard= {userdashboard} 
+                        deleteArticle={deleteArticle} 
+                        editArticle={editArticle} 
+                        editedArticle={editedArticle}
+                    />
+                })}
+            </StackGrid>
+        </section>
     )
 }
 

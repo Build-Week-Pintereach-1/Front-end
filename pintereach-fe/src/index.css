@@ -91,19 +91,26 @@ h3{
 
 
 
-.article-card {
+.article-card{
  
   margin: 1.5%;
-  box-shadow: 2px 2px 12px rgba(141, 134, 87, 0.5);
-  border-radius: 15px;
-  border-top: 2rem solid rgba(249, 224, 53, 1);
-  padding: 2.5%;
+  box-shadow: 2px 2px 12px rgba(80, 180, 212, 1);
+  border-radius: .3rem;
+  border-top: 1rem solid rgb(255, 163, 127);
+  padding: 1.5% 3.5% 3.5% 3.5%;
   /* padding-left: 3%; */
   text-align: left;
-  background-color: white;
+  background-color: rgb(242, 246, 247);
 }
 
+<<<<<<< HEAD
+=======
+body {
+  background-image: url('./assets/images/Tortoise-Shell.svg');
+  height: 100%;
+}
 
+>>>>>>> d0f4282460a860ae1a1f92f3e0f86cdd4d0c4ad6
 .save-button {
 background-color: rgba(45, 130, 165, 1);
 color: white;
@@ -111,25 +118,29 @@ border-radius: .3rem;
 border: none;
 font-size: 1.4rem;
 padding: .5rem;
+transition: background-color .3s ease;
+margin-top: 1rem;
 }
 
 .save-button:hover{
-  background-color: rgba(255, 145, 50, 1);
-}
-
-.App {
-  background-image: url('./assets/images/Tortoise-Shell.svg')
+  background-color: rgba(255, 99, 71, 1);
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(80, 180, 212, 1);
+  transition: background-color .2s ease;
 }
 
 .article-card a{
   text-decoration: none;
-  color: black;
+  color: rgba(255, 99, 71, 1);
   text-transform: uppercase;
   z-index: -1;
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 
+/* 
 /* colors for article links */
-.article-list a:nth-child(1){
+/* .article-list a:nth-child(1){
   text-decoration: none;
   border-bottom: 2px solid rgba(249, 224, 53, 1);
 }
@@ -155,14 +166,15 @@ padding: .5rem;
 .article-card:nth-of-type(3n) a:hover{
   font-weight: bold;
   color: rgba(109, 207, 246, 1);
-}
+} */
 
 nav{
- z-index: 2;
-}
+ z-index: 99;
+ position: relative;
+} 
 
 
-.article-card:nth-of-type(2n) {
+ .article-card:nth-of-type(2n) {
   border-top: 2rem solid rgba(124, 197, 118, 1);
   box-shadow: 2px 2px 12px rgba(124, 197, 118, 0.5);
 }
@@ -173,12 +185,17 @@ nav{
   border-top: 2rem solid rgba(109, 207, 246, 1);
   box-shadow: 2px 2px 12px rgba(109, 207, 246, .5);
 
-}
-
+} 
 
 .article-authors{
   padding: 1rem 0;
   font-style: italic;
+}
+
+.article-abstract { 
+  min-height: 4.5rem;
+  max-height: 6rem;
+  overflow-y: hidden;
 }
 
 .card-content-saved{
@@ -216,8 +233,12 @@ border-radius: .3rem;
 border: none;
 font-size: 1.1rem;
 padding: .5rem;
-}
+}git pu
 
 .saved-card-form button:hover{
   background-color: rgba(255, 145, 50, 1);
+}
+
+.bold-title{
+  font-weight: 700;
 }
