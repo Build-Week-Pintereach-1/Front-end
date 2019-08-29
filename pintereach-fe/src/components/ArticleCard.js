@@ -46,7 +46,7 @@ export default function ArticleCard({ article }) {
       </button>
       </div>
       <Modali.Modal {...modal}>
-      <SavedCard id = {id}/>
+        <SavedCard id = {id}/>
       </Modali.Modal>
   </div>
   );
