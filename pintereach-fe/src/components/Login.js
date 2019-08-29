@@ -70,7 +70,7 @@ const LoginForm = (props) => {
                     onChange={handleChanges}
                 />   
                 <StyledInput
-                    type="text"
+                    type="password"
                     name="password"
                     placeholder="Enter password"
                     value={creds.password}
