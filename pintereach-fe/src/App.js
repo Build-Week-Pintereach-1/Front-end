@@ -33,11 +33,7 @@ function App() {
         />
         <Route path="/SignUp" component={SignUpForm} />
       </div>
-<<<<<<< HEAD
-      {/* <DisplayArticleBoard /> */} 
-=======
          
->>>>>>> bf576511b824c6d10d0ecd6ae058ed269c8d789e
     </div>
   );
 }

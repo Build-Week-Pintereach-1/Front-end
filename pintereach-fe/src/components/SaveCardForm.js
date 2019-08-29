@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Form, Field, withFormik } from "formik";
 import * as yup from 'yup';
 import axios from 'axios';
+import axiosWithAuth from '../utils/axiosWithAuth'
 
 import { saveProps } from './SavedCard'
 
@@ -47,14 +48,9 @@ const SavedCardForm = ( { errors, touched, values, status, saveProps }) => {
         </div>
     );
 };
-<<<<<<< HEAD
-const FormikSavedCardForm = withFormik({
-    mapPropsToValues:({ notes, tag }) => {
-=======
 
 const FormikSavedCardForm = withFormik({
     mapPropsToValues:({ notes, board }) => {
->>>>>>> bf576511b824c6d10d0ecd6ae058ed269c8d789e
         return {
             notes: notes || '',
             board: board || '',
@@ -70,22 +66,23 @@ const FormikSavedCardForm = withFormik({
         
         submitMe = {
             ...submitMe,
-            "comments": values.notes,
-            "board": values.board
+            comments: values.notes,
+            board: values.board
         }
 
-        axios.post('https://nameless-lake-751239.herokuapp.com/addarticle', submitMe)
+        console.log("Before axios??", submitMe) 
+        axios.post('https://nameless-lake-75129.herokuapp.com/addarticle', submitMe)
         .then(response => {
              console.log(response)
-             setComment(response);
+            //  setComment(response);
              resetForm();
             
          })
          .catch(error => {
             console.log(error);
          });
-        console.log(values)
-       console.log("I am a saved card!", submitMe)
+        // console.log(values)
+       alert(submitMe)
     }
 })(SavedCardForm);
 

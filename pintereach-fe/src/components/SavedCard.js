@@ -5,14 +5,15 @@ import { useEffect, useState } from 'react';
 import FormikSavedCardForm from './SaveCardForm'
 
 export let saveProps = {
-    "user_id": localStorage.getItem("userID"),
-    "board": "",
-    "title": "",
-    "authors": "",
-    "journal": "",
-    "abstract": "",
-    "articleId": "",
-    "comments": ""
+    abstract: "",
+    articleId: "",
+    authors: "",
+    board: "",
+    comments: "",
+    id: 60,
+    journal: "",
+    title: "",
+    user_id: parseInt(localStorage.getItem("userID"))
 }
 
 export const SavedCard = (props) => {
@@ -32,7 +33,7 @@ export const SavedCard = (props) => {
                 title: res.data.response.docs[0].title_display,
                 authors: res.data.response.docs[0].author_display.join(", "),
                 journal: res.data.response.docs[0].journal,
-                abstract: res.data.response.docs[0].abstract[0],
+                abstract: res.data.response.docs[0].abstract[0].replace("\n", "").replace("\n", ""),
                 articleId: res.data.response.docs[0].id
              }
              console.log("saveProps object: ", saveProps)
