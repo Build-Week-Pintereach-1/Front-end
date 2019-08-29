@@ -1,4 +1,4 @@
-import React, { useState }from "react";
+import React, { useState, useEffect }from "react";
 import axios from "axios";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import DashCard from './DashCard';
@@ -7,17 +7,42 @@ import StackGrid from "react-stack-grid";
 const UserDashboard = (props) => {
     // const userID = localStorage.getItem("userID")
     const [userdashboard, setUserdashboard] = useState([]);
+    const [boardNames, setBoardNames] = useState([]);
+    const [boardSelected, setBoardSelected] = useState(false);
+    const [filteredBoard, setFilteredBoard] = useState([]);
 
-    const getData = () => {
-        axiosWithAuth()
-        .get(`https://nameless-lake-75129.herokuapp.com/articles/users/1`)
-        .then(res => {console.log("GET user arts :", res.data)
-            setUserdashboard(res.data)})
-        .catch(err => console.log("GET ERROR!", err))
-    }
-
+    // let boardNames = [];
+    useEffect(() => {
+        // const getData = () => {
+            axiosWithAuth()
+            .get(`https://nameless-lake-75129.herokuapp.com/articles/users/1`)
+            .then(res => {
+                console.log("GET user arts :", res.data)
+                setUserdashboard(res.data)
+                setBoardNames([...new Set(res.data.map(obj => obj.board))])
+                console.log("boardNames?", boardNames)})
+            .catch(err => console.log("GET ERROR!", err))
+        // }
+    }, [])
+    console.log("boardNames redux", boardNames)
+    
     // const [editedArticle, setEditedArticle] = useState({
     // })
+
+    const filterBoards = (board) => {
+        setBoardSelected(true)
+        console.log(`my board is ${board}!`)
+        return setFilteredBoard(userdashboard.filter(item => item.board === board))
+    }
+
+    const unfilter = () => {
+        setBoardSelected(false)
+    }
+
+    /**
+     * title 
+     * display a mapped list of ONLY items that match item.title === board
+     */
 
     const editedArticle = {
         abstract: "EXTRA NEw EDITED Background:sting questionnaires. ",
@@ -32,15 +57,15 @@ const UserDashboard = (props) => {
     }
 
     const editArticle = (e) => {
-    e.preventDefault();
-    axiosWithAuth()
-        .put(`https://nameless-lake-75129.herokuapp.com/updatearticle/${editedArticle.id}`, editedArticle)
-        .then(res => {
-            console.log("art edit with PUT: ", res)
-        })
-        .catch(err => {
-            console.log("error PUTTING art: ", err.response)
-        })
+        e.preventDefault();
+        axiosWithAuth()
+            .put(`https://nameless-lake-75129.herokuapp.com/updatearticle/${editedArticle.id}`, editedArticle)
+            .then(res => {
+                console.log("art edit with PUT: ", res)
+            })
+            .catch(err => {
+                console.log("error PUTTING art: ", err.response)
+            })
     }
 
     const deleteArticle = (e) => {
@@ -57,9 +82,13 @@ const UserDashboard = (props) => {
     
     return(
         <section className="article-list">
-            <button onClick={getData}> Get Articles </button>
+            {/* <button > Get Articles </button> */}
+            <button onClick={unfilter}>All saved articles</button>
+            {boardNames.map(a => (
+                <button key={a} onClick={() => filterBoards(a)}> {a} </button> 
+            ))}
             <StackGrid columnWidth={500}>
-                {userdashboard.map(userdashboard =>{
+                { !boardSelected ? userdashboard.map(userdashboard =>{
                     return <DashCard 
                         key={userdashboard.id} 
                         userdashboard= {userdashboard} 
@@ -67,7 +96,17 @@ const UserDashboard = (props) => {
                         editArticle={editArticle} 
                         editedArticle={editedArticle}
                     />
-                })}
+                }) :
+                filteredBoard.map(userdashboard => (
+                    <DashCard 
+                        key={userdashboard.id} 
+                        userdashboard= {userdashboard} 
+                        deleteArticle={deleteArticle} 
+                        editArticle={editArticle} 
+                        editedArticle={editedArticle}
+                    />
+                ))
+            }
             </StackGrid>
         </section>
     )
