@@ -5,7 +5,11 @@ import { Form, Field, withFormik } from "formik";
 import * as yup from 'yup';
 import axios from 'axios';
 
-const SavedCardForm = ( { errors, touched, values, status }) => {
+import { saveProps } from './SavedCard'
+
+
+
+const SavedCardForm = ( { errors, touched, values, status, saveProps }) => {
 
     const [comment, setComment] = useState([]);
     useEffect(() => {
@@ -14,6 +18,7 @@ const SavedCardForm = ( { errors, touched, values, status }) => {
       }
     }, [status]);
 
+    
     return(
         <div className="saved-card-form">
             <Form>
@@ -25,8 +30,8 @@ const SavedCardForm = ( { errors, touched, values, status }) => {
             />
              <Field
                 type="text"
-                name="tag"
-                placeholder="Tags"
+                name="board"
+                placeholder="Board Title"
             />
         <button type="submit">Save</button>
                 </Form>
@@ -34,7 +39,7 @@ const SavedCardForm = ( { errors, touched, values, status }) => {
             {comment.map(comment => (
                 <ul>
                     <li>Notes: {comment.data.notes} </li>
-                    <li>Tags: {Comment.data.tag} </li>
+                    <li>Board: {Comment.data.board} </li>
                 </ul>
             ))}
             
@@ -42,30 +47,42 @@ const SavedCardForm = ( { errors, touched, values, status }) => {
         </div>
     );
 };
+
 const FormikSavedCardForm = withFormik({
-    mapPropsToValues:({ notes, tag }) => {
+    mapPropsToValues:({ notes, board }) => {
         return {
             notes: notes || '',
-            tag: tag || '',
+            board: board || '',
         };
     },
     validationSchema: yup.object().shape({
         notes: yup.string(),
-        tag: yup.string()
-        .required('Add at least one tag')
+        board: yup.string()
+        .required('Add board name')
     }),
-    handleSubmit:(values, { resetForm, setComment }) => {
-        axios.post('https://reqres.in/', values)
-        //this will need to be changed to point to our backend
+    handleSubmit:(values, { resetForm, setComment}) => {
+        let submitMe = saveProps;
+        
+        submitMe = {
+            ...submitMe,
+            "comments": values.notes,
+            "board": values.board
+        }
+
+        axios.post('https://nameless-lake-751239.herokuapp.com', submitMe)
         .then(response => {
-            console.log(response)
-            setComment(response);
-            resetForm();
-        })
-        .catch(error => {
+             console.log(response)
+             setComment(response);
+             resetForm();
+            
+         })
+         .catch(error => {
             console.log(error);
-        });
+         });
+        console.log(values)
+       console.log("I am a saved card!", submitMe)
     }
 })(SavedCardForm);
+
 
 export default FormikSavedCardForm;

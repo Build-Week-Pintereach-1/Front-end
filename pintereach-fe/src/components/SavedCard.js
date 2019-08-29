@@ -4,67 +4,72 @@ import ArticleCard from './ArticleCard';
 import { useEffect, useState } from 'react';
 import FormikSavedCardForm from './SaveCardForm'
 
-const SavedCard = (props) => {
+export let saveProps = {
+    "user_id": localStorage.getItem("userID"),
+    "board": "",
+    "title": "",
+    "authors": "",
+    "journal": "",
+    "abstract": "",
+    "articleId": "",
+    "comments": ""
+}
 
-    const fake = [{
-        abstract: ["This article uses data from Thomson Reute… data and draw conclusions for themselves."],
-        author_display:[
-             "Paul Oldham",
-            "Stephen Hall",   
-            "Geoff Burton"
-        ],
-        id: "10.1371/journal.pone.0034368",
-        journal: "PLoS ONE",
-        title_display: "Synthetic Biology: Mapping the Scientific Landscape"
-        }]
+export const SavedCard = (props) => {
 
-    const [SavedCard, setSavedCard] = useState({});
+    const [savedCard, setSavedCard] = useState([]);
 
-    // const saveArticle = () => {
-    //     const addToArticleBoard = { addToArticleBoard };
-    //     addToArticleBoard(savedCard)
-    //   }
+    const id = props.id
 
-    // useEffect(() => {
-    //     axios
-    //     .get(`/*BACKEND/*`)
-    //     .then(res => {
-    //         console.log(res);
-    //         setSavedCard(res);
-    //     })
-    //     .catch(error => {
-    //         console.log(error);
-    //     })
-    // }, []);
+     useEffect(() => {
+         axios
+         .get(`https://cors-anywhere.herokuapp.com/http://api.plos.org/search?q=id:${id}`)
+         .then(res => {
+             console.log(res.data.response.docs);
+             setSavedCard(res.data.response.docs);
+             saveProps = {
+                 ...saveProps,
+                title: res.data.response.docs[0].title_display,
+                authors: res.data.response.docs[0].author_display.join(", "),
+                journal: res.data.response.docs[0].journal,
+                abstract: res.data.response.docs[0].abstract[0],
+                articleId: res.data.response.docs[0].id
+             }
+             console.log("saveProps object: ", saveProps)
+
+         })
+         .catch(error => {
+             console.log(error);
+         })
+     }, []);
+
+    const saveArticle = () => {
+        const addToArticleBoard = { addToArticleBoard };
+        addToArticleBoard(savedCard)
+      }
 
     return (
         <div>
-            {fake.map(savedArticle => (
-                <SavedDisplay savedArticle = {savedArticle} />
+            {savedCard.map(savedArticle => (
+                <SavedDisplay key = {savedCard.id} savedArticle = {savedArticle} />
             ))}
         </div>
             );
-     }
+     
 
 
     function SavedDisplay({ savedArticle }){
-    const { id, title_display, author_display, journal, abstract } = savedArticle;
+    const { title_display,  journal } = savedArticle;
 
     return(
-     <div className= 'article-card saved' key="id" >
-      <div className='card-content saved'>
+     <div className= 'article-card-saved' key="id" >
+      <div className='card-content-saved'>
       <h2>{title_display}</h2>
       <h3>{journal}</h3>
-      <div className='article-authors saved'>
-        Author(s):
-          {author_display}
-      </div>
-      <a href={`http://doi.org/${id}`} target='_blank'>View Article</a>
-      <p className="article-abstract saved">{abstract}</p>   
-      </div>
-      <FormikSavedCardForm />
+      <FormikSavedCardForm savedCard = {savedCard}/>
+        </div>
         </div>
     );
 }
+}
 
-export default SavedCard;

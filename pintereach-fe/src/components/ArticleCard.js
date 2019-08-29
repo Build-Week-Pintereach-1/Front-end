@@ -1,6 +1,6 @@
 import React from "react";
 import Modali, { useModali } from 'modali';
-import SavedCard from "./SavedCard";
+import { SavedCard } from "./SavedCard";
 
 export default function ArticleCard({ article }) {
 
@@ -21,11 +21,13 @@ export default function ArticleCard({ article }) {
       <p className="article-abstract">{abstract}</p>   
       </div>
       /*This button should maybe post the article to our backend too */
+      <div>
       <button className= "save-button" onClick={toggleModal} >
         Save Article
       </button>
+      </div>
       <Modali.Modal {...modal}>
-       <SavedCard />
+      <SavedCard id = {id}/>
       </Modali.Modal>
   </div>
   );

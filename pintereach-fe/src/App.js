@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './index.css';
-
+import SavedCard from './components/SavedCard'
 import Header from './components/Header';
 import MainContainer from './components/MainContainer'
 import LoginForm from "./components/Login";
