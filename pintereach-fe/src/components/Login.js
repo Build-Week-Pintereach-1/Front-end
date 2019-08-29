@@ -53,7 +53,6 @@ const LoginForm = (props) => {
                 localStorage.setItem("token", res.data.tokenThing)
                 localStorage.setItem("userID", res.data.id)
                 props.setUserID(localStorage.getItem("userID"))
-                // console.log("userID: ", props.userID)
                 routeToUserDashboard()
             })
             .catch(err => console.log("Error logging in: ", err.response))
