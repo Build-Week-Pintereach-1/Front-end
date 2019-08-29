@@ -13,27 +13,29 @@ import DisplayArticleBoard from './components/DisplayArticleBoard';
 import ArticleBoard from './components/ArticleBoard';
 
 function App() {
-    const [search, setSearch] = useState("")
-    const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token") || false)
-    return (
-      <div className="App">
-        <Header search={search} setSearch={setSearch} />
-        <div>
-          <Route exact path="/" render = {props => (
-            <ArticleList
-              {...props}
-              search={search}
-            />
-          )} />
-          <PrivateRoute path="/user/:id" component={UserDashboard} />
-          <Route path="/Login" render = {props => (
-            <LoginForm {...props} /> )}
+  const [search, setSearch] = useState("")
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token") || false)
+  const [userID, setUserID] = useState(null)
+
+
+  return (
+    <div className="App">
+      <Header search={search} setSearch={setSearch} />
+      <div>
+        <Route exact path="/" render = {props => (
+          <ArticleList
+            {...props}
+            search={search}
           />
-          <Route path="/SignUp" component={SignUpForm} />
-        </div>
-           
+        )} />
+        <PrivateRoute path="/user/:id" component={UserDashboard} userID={userID}/>
+        <Route path="/Login" render = {props => (
+          <LoginForm {...props} userID={userID} setUserID={setUserID}/> )}
+        />
+        <Route path="/SignUp" component={SignUpForm} />
       </div>
-  
+    </div>
+      
   );
 }
 

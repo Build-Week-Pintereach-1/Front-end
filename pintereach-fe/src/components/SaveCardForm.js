@@ -1,78 +1,67 @@
 import React from 'react';
 import ArticleCard from './ArticleCard'
 import { useState, useEffect } from 'react';
-import { Form, Field, withFormik } from "formik";
-import * as yup from 'yup';
+// import { Form, Field, withFormik } from "formik";
+// import * as yup from 'yup';
 import axios from 'axios';
+import axiosWithAuth from '../utils/axiosWithAuth'
 
-import { saveProps } from './SavedCard'
+// import { saveProps } from './SavedCard'
 
+const SavedCardForm = ( { savedCard  }) => {
+    console.log("savedCard in Form", savedCard)
+    const [comment, setComment] = useState("");
 
+    const [board, setBoard] = useState("");
 
-const SavedCardForm = ( { errors, touched, values, status, saveProps }) => {
+    const handleCommentChanges = e => {
+        e.preventDefault();
+        setComment(e.target.value)
+    }
 
-    const [comment, setComment] = useState([]);
-    useEffect(() => {
-      if (status) {
-        setComment([...comment, status]);
-      }
-    }, [status]);
+    const handleBoardChanges = e => {
+        e.preventDefault();
+        setBoard(e.target.value)
+    }
 
+    const handleSubmit = e => {
+        e.preventDefault();
+
+        // console.log("Testing the AUTHORS for undefined: ", savedCard.author_display.join(", "))
+
+        let submitMe = {
+            abstract: savedCard.abstract[0],
+            authors:   savedCard.author_display.join(", "), // IT WORKS...USUALLY!!!
+            articleId:  savedCard.id, // IT WORKS!!!
+            journal: savedCard.journal, // IT WORKS!!!
+            title: savedCard.title_display,
+            comments: comment,
+            board: board,
+            user_id: 1
+        }
+        
+        axios.post('https://nameless-lake-75129.herokuapp.com/addarticle', submitMe)
+       
+        .then(response => {
+            console.log('SubmitMe after post then: ', submitMe)
+             console.log("Then res: ", response)
+            //  resetForm();
+         })
+         .catch(error => {
+            console.log("catch err: ", error);
+         });
+    }
     
     return(
         <div className="saved-card-form">
-            <Form>
-            {touched.notes && errors.notes && <p className="error">{errors.notes}</p>}
-            <Field
-                type="textarea"
-                name="notes"
-                placeholder="Notes"
-            />
-             <Field
-                type="text"
-                name="board"
-                placeholder="Board Title"
-            />
-        <button type="submit">Save</button>
-                </Form>
+            <form>
+                <input type="textarea" name="notes" placeholder="Notes" onChange={handleCommentChanges}/>
+                <input type="text" name="board" placeholder="Board Title" onChange={handleBoardChanges}/>
+                <button type="submit" onClick={handleSubmit}>Save</button>
+            </form>
+ 
         </div>
     );
 };
 
-const FormikSavedCardForm = withFormik({
-    mapPropsToValues:({ notes, board }) => {
-        return {
-            notes: notes || '',
-            board: board || '',
-        };
-    },
-    validationSchema: yup.object().shape({
-        notes: yup.string(),
-        board: yup.string()
-        .required('Add board name')
-    }),
-    handleSubmit:(values, { resetForm, setComment}) => {
-        let submitMe = saveProps;
-        
-        submitMe = {
-            ...submitMe,
-            "comments": values.notes,
-            "board": values.board
-        }
-
-        axios.post('https://nameless-lake-751239.herokuapp.com/addarticle', submitMe)
-        .then(response => {
-             console.log(response)
-             setComment(response);
-             resetForm();
-            
-         })
-         .catch(error => {
-            console.log(error);
-         });
-        console.log(values)
-       console.log("I am a saved card!", submitMe)
-    }
-})(SavedCardForm);
-
-export default FormikSavedCardForm;
+export default SavedCardForm;
