@@ -10,6 +10,7 @@ import ArticleList from "./components/ArticleList";
 import UserDashboard from './components/UserDashboard';
 import PrivateRoute from "./components/PrivateRoute";
 import DisplayArticleBoard from './components/DisplayArticleBoard';
+import ArticleBoard from './components/ArticleBoard';
 
 function App() {
   const [search, setSearch] = useState("")
@@ -36,8 +37,8 @@ function App() {
         />
         <Route path="/SignUp" component={SignUpForm} />
       </div>
-         
     </div>
+      
   );
 }
 
