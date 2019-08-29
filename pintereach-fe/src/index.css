@@ -91,7 +91,7 @@ h3{
 
 
 
-.article-card {
+.article-card{
  
   margin: 1.5%;
   box-shadow: 2px 2px 12px rgba(141, 134, 87, 0.5);
@@ -102,7 +102,6 @@ h3{
   text-align: left;
   background-color: white;
 }
-
 
 .save-button {
 background-color: rgba(45, 130, 165, 1);
@@ -121,15 +120,12 @@ padding: .5rem;
   background-image: url('./assets/images/Tortoise-Shell.svg')
 }
 
-.article-card a{
-  text-decoration: none;
-  color: black;
-  text-transform: uppercase;
-  z-index: -1;
-}
+ .article-card:nth-of-type(4n) {
+border-top: 2rem solid orange;
+} 
 
 /* colors for article links */
-.article-list a:nth-child(1){
+ .article-card a:nth-child(1){
   text-decoration: none;
   border-bottom: 2px solid rgba(249, 224, 53, 1);
 }
@@ -155,14 +151,10 @@ padding: .5rem;
 .article-card:nth-of-type(3n) a:hover{
   font-weight: bold;
   color: rgba(109, 207, 246, 1);
-}
-
-nav{
- z-index: 2;
-}
+} 
 
 
-.article-card:nth-of-type(2n) {
+ .article-card:nth-of-type(2n) {
   border-top: 2rem solid rgba(124, 197, 118, 1);
   box-shadow: 2px 2px 12px rgba(124, 197, 118, 0.5);
 }
@@ -173,8 +165,7 @@ nav{
   border-top: 2rem solid rgba(109, 207, 246, 1);
   box-shadow: 2px 2px 12px rgba(109, 207, 246, .5);
 
-}
-
+} 
 
 .article-authors{
   padding: 1rem 0;
