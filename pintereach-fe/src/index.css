@@ -103,14 +103,11 @@ h3{
   background-color: rgb(242, 246, 247);
 }
 
-<<<<<<< HEAD
-=======
 body {
   background-image: url('./assets/images/Tortoise-Shell.svg');
   height: 100%;
 }
 
->>>>>>> d0f4282460a860ae1a1f92f3e0f86cdd4d0c4ad6
 .save-button {
 background-color: rgba(45, 130, 165, 1);
 color: white;
