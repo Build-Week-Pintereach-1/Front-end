@@ -35,15 +35,6 @@ const SavedCardForm = ( { errors, touched, values, status, saveProps }) => {
             />
         <button type="submit">Save</button>
                 </Form>
-        <div className= 'card-comments'>
-            {comment.map(comment => (
-                <ul>
-                    <li>Notes: {comment.data.notes} </li>
-                    <li>Board: {Comment.data.board} </li>
-                </ul>
-            ))}
-            
-        </div>
         </div>
     );
 };

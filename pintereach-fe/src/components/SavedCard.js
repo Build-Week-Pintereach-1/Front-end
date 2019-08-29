@@ -61,11 +61,14 @@ export const SavedCard = (props) => {
     function SavedDisplay({ savedArticle }){
     const { title_display,  journal } = savedArticle;
 
+     // strips ugly <i></> tags from appearing in the title display
+     let strippedTitle = title_display.replace(/(<([^>]+)>)/ig,"");
+
     return(
      <div className= 'article-card-saved' key="id" >
       <div className='card-content-saved'>
-      <h2>{title_display}</h2>
-      <h3>{journal}</h3>
+      <h2>{strippedTitle}</h2>
+      <h3> <i class="fas fa-book"></i> {journal}</h3>
       <FormikSavedCardForm savedCard = {savedCard}/>
         </div>
         </div>

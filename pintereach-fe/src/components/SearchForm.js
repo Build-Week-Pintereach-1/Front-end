@@ -105,7 +105,7 @@ function SearchForm ({setSearch}) {
             ...tempSearch,
             [e.target.name]: e.target.value
         })
-        console.log(tempSearch)
+        // console.log(tempSearch)
         
     }
     
@@ -123,18 +123,18 @@ function SearchForm ({setSearch}) {
 
     const assembleQuery = (e) => {
         e.preventDefault()
-        console.log("final search", tempSearch)
-        console.log(Object.entries(tempSearch))
+        // console.log("final search", tempSearch)
+        // console.log(Object.entries(tempSearch))
 
         const queryArray = Object.entries(tempSearch)
 
         const newArray = queryArray
             .map((arr, index) => {
                 if (arr[1]) {
-                    console.log("condition 1 called!", arr, index, queryArray.length)
+                    // console.log("condition 1 called!", arr, index, queryArray.length)
                     return `${arr[0]}:"${arr[1]}"`
                 } else {
-                    console.log("condition 3 called!", arr, index, queryArray.length)
+                    // console.log("condition 3 called!", arr, index, queryArray.length)
                     return
                 }
             })
@@ -144,7 +144,7 @@ function SearchForm ({setSearch}) {
             .join(' AND ')
             
 
-        console.log("new Array: ", newArray)
+        // console.log("new Array: ", newArray)
         setSearch(newArray)
     }
 
