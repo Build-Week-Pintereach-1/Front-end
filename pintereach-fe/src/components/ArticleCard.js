@@ -18,10 +18,22 @@ export default function ArticleCard({ article }) {
   //   "comments": "" //userinput
   // })  
 
+  const fakeArt = {
+    // "id": 9, 
+    "user_id": 8,
+    "board": "PUT WORKS Board",
+    "title": "PUT WORKS Title", //article.title_display
+    "authors": "PUT WORKS authors", //article.author_display
+    "journal": "PUT WORKS Journal", //article.journal
+    "abstract": "PUT WORKS", //article.abstract
+    "articleId": "PUT WORKS", //`${API}article.id`
+    "comments": "PUT WORKS Comments", //userinput
+  }
+  
   const fakePUT = (e) => {
     e.preventDefault();
     axiosWithAuth()
-    .put("https://nameless-lake-75129.herokuapp.com/updatearticle/1", fakeArt)
+    .put("https://nameless-lake-75129.herokuapp.com/updatearticle/9", fakeArt)
     .then(res => {
       console.log("art edit with PUT: ", res)
     })
