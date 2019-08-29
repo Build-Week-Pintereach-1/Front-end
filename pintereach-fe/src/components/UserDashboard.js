@@ -15,7 +15,6 @@ const UserDashboard = (props) => {
             <p> UserDashboard goes here </p>
         <button onClick={getData}>Get data</button>
         </div>
-
     )
 }
 

@@ -20,7 +20,10 @@ function App() {
 
   return (
     <div className="App">
-      <Header search={search} setSearch={setSearch} />
+  {/*<Header search={search} setSearch={setSearch} />*/}
+      <Route path="/" render={props => (
+        <Header search={search} setSearch={setSearch} {...props} />
+      )} />
       <div>
         <Route exact path="/" render = {props => (
           <ArticleList
