@@ -1,37 +1,37 @@
 import React from 'react';
 import axios from 'axios';
 import ArticleCard from './ArticleCard';
-import SavedCardForm from './SaveCardForm';
 import { useEffect, useState } from 'react';
+import SavedCardForm from './SaveCardForm'
 
-const SavedCard = (props) => {
-    const [savedCard, setSavedCard] = useState({});
+export const SavedCard = (props) => {
 
-    useEffect(() => {
-        axios
-        .get(`/*BACKEND/*`)
-        .then(res => {
-            console.log(res);
-            setSavedCard(res);
-        })
-        .catch(error => {
-            console.log(error);
-        })
-    }, []);
+    const [savedCard, setSavedCard] = useState([]);
+    const id = props.id
 
-    const saveArticle = () => {
-        const addToArticleBoard = { addToArticleBoard };
-        addToArticleBoard(savedCard);
-      }
+     useEffect(() => {
+         axios
+         .get(`https://cors-anywhere.herokuapp.com/http://api.plos.org/search?q=id:${id}`)
+         .then(res => {
+             console.log("saveCard becomes: ", res.data.response.docs);
+             setSavedCard(res.data.response.docs[0]);
 
-    const { id, title, authors, abstract } = savedCard;
+         })
+         .catch(error => {
+             console.log(error);
+         })
+     }, []);
 
-    return(
+    return (
         <div>
-        <ArticleCard article = {savedCard}/>
-        <SavedCardForm />
+            <h2>{savedCard.title_display}</h2> 
+            <h3>{savedCard.journal}</h3>
+            <SavedCardForm savedCard={savedCard} />
+
+            {/*savedCard.map(savedArticle => (
+                <SavedDisplay key = {savedCard.id} savedArticle = {savedArticle} savedCard={savedCard}/>
+            ))*/}
         </div>
-    );
+            );
 }
 
-export default SavedCard;

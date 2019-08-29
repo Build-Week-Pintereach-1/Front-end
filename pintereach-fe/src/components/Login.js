@@ -40,7 +40,7 @@ const LoginForm = (props) => {
     }
 
     const routeToUserDashboard = () => {
-        props.history.push("/UserDashboard")
+        props.history.push("/")
     }
 
     const handleSubmit = e => {
