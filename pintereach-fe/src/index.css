@@ -116,6 +116,7 @@ border: none;
 font-size: 1.4rem;
 padding: .5rem;
 transition: background-color .3s ease;
+margin-top: 1rem;
 }
 
 .save-button:hover{
@@ -131,6 +132,7 @@ transition: background-color .3s ease;
   text-transform: uppercase;
   z-index: -1;
   font-weight: 600;
+  margin-bottom: 1rem;
 }
 
 /* 
@@ -164,7 +166,8 @@ transition: background-color .3s ease;
 } */
 
 nav{
- z-index: 2;
+ z-index: 99;
+ position: relative;
 } 
 
 
@@ -185,6 +188,12 @@ nav{
 .article-authors{
   padding: 1rem 0;
   font-style: italic;
+}
+
+.article-abstract { 
+  min-height: 4.5rem;
+  max-height: 6rem;
+  overflow-y: hidden;
 }
 
 .card-content-saved{
