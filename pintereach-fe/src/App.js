@@ -19,21 +19,16 @@ const randomString = () => {
   return pick;
 }
 
-
 function App() {
-  const [search, setSearch] = useState(localStorage.getItem("searchTerm") || randomString)
-  const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token") || false)
-  const [userID, setUserID] = useState(null)
-
-  
-  
-
+  const [search, setSearch] = useState(localStorage.getItem("searchTerm") || randomString);
+  const [loggedIn, setLoggedIn] = useState((localStorage.getItem("token") && localStorage.getItem("userID")) || false);
+  const [userID, setUserID] = useState(null);
 
   return (
     <div className="App">
   {/*<Header search={search} setSearch={setSearch} />*/}
       <Route path="/" render={props => (
-        <Header search={search} setSearch={setSearch} {...props} />
+        <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn}search={search} setSearch={setSearch} {...props} />
       )} />
       <div>
         <Route exact path="/" render = {props => (
@@ -42,14 +37,14 @@ function App() {
             search={search}
           />
         )} />
+        
         <PrivateRoute path="/user/:id" component={UserDashboard} userID={userID}/>
         <Route path="/Login" render = {props => (
-          <LoginForm {...props} userID={userID} setUserID={setUserID}/> )}
+          <LoginForm {...props} userID={userID} setUserID={setUserID} loggedIn={loggedIn} setLoggedIn={setLoggedIn}/> )}
         />
         <Route path="/SignUp" component={SignUpForm} />
       </div>
     </div>
-      
   );
 }
 

@@ -23,8 +23,8 @@ const StyledButton = styled.button`
 
 `
 
-const LoginForm = (props) => {
-
+const LoginForm = ( props ) => {
+    console.log("props!!!!!!! in login", props)
     const [creds, setCreds] = useState({
         username: "",
         password: "",
@@ -53,6 +53,7 @@ const LoginForm = (props) => {
                 localStorage.setItem("token", res.data.tokenThing)
                 localStorage.setItem("userID", res.data.id)
                 props.setUserID(localStorage.getItem("userID"))
+                props.setLoggedIn(true)
                 routeToUserDashboard()
             })
             .catch(err => console.log("Error logging in: ", err.response))

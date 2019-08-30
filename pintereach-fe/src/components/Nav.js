@@ -24,7 +24,6 @@ width: 100%;
         display: inline;
         height: 25rem;
       }
-
 `;
 
 // const LogoImg = styled.img`
@@ -36,20 +35,35 @@ width: 100%;
 
 const userID = localStorage.getItem("userID")
 
-function Nav ({search, setSearch}) {
-    return (
-      <div classname = "header-container">
+
+function Nav ({search, setSearch, userID, setUserID, loggedIn, setLoggedIn}) {
+
+  const logout = () => {
+    localStorage.removeItem("token"); 
+    localStorage.removeItem("userID");
+    setLoggedIn(false)
+  }
+  
+  return (
+      <div className = "header-container">
         <StyledNav>
             <div className="logo-container">
                 <Link to="/"><img src={Icon}/></Link>
             </div>
             <SearchForm search={search} setSearch={setSearch}/>
             <div className="nav-container">
+                {loggedIn ? (
                  <div className="nav-container-links">
-                    <Link to="/Login">Sign in</Link>
-                    <Link to="/SignUp">Create account</Link>
-                    <Link to={`/user/${userID}`} >My Boards </Link>
-                </div>
+                   {console.log("LI", loggedIn)}
+                      <Link to={`/user/${userID}`} >My Boards </Link>
+                      <Link to="/" onClick={logout}>Log out</Link>
+                  </div>
+                      ) : (
+                  <div className="nav-container-links">
+                      <Link to="/Login">Sign in</Link>
+                      <Link to="/SignUp">Create account</Link>
+                  </div>
+                )}
             </div>
         </StyledNav>
       </div>
