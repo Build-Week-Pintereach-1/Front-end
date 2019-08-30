@@ -20,6 +20,12 @@ const StyledNav = styled.nav`
     position: fixed;
     top: 0;
     z-index: 999;
+
+    @media screen and (max-width: 500px) {
+        flex-direction: column;
+        height: auto;
+        padding-left: 0;
+    }
 `;
 
 const LogoImg = styled.img`
@@ -27,6 +33,13 @@ const LogoImg = styled.img`
         margin-left: 2rem;
         position: relative;
         top: 1rem;
+
+        @media (max-width: 500px) {
+            border: 2px red solid;
+            margin-left: 0;
+            order: 3;
+            width: 6rem;
+        }
 `;
 
 const userID = localStorage.getItem("userID")
@@ -34,11 +47,17 @@ const userID = localStorage.getItem("userID")
 function Nav ({search, setSearch}) {
     return (
         <StyledNav>
-            <Link to="/"><LogoImg src={Icon}/></Link>
-            <SearchForm search={search} setSearch={setSearch}/>
-            <Link to="/Login">Sign in</Link>
-            <Link to="/SignUp">Create account</Link>
-            <Link to={`/user/${userID}`} >My Boards </Link>
+            <div>
+                <Link to="/"><LogoImg src={Icon}/></Link>
+                <SearchForm search={search} setSearch={setSearch}/>
+            </div>
+            
+            <div>
+                <Link to="/Login">Sign in</Link>
+                <Link to="/SignUp">Create account</Link>
+                <Link to={`/user/${userID}`} >My Boards </Link>
+            </div>
+            
         </StyledNav>
     )
 }
