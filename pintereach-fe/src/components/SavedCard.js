@@ -27,12 +27,8 @@ export const SavedCard = (props) => {
             <h2>{savedCard.title_display}</h2> 
             <h3>{savedCard.journal}</h3>
             <SavedCardForm savedCard={savedCard} />
-
-            {/*savedCard.map(savedArticle => (
-                <SavedDisplay key = {savedCard.id} savedArticle = {savedArticle} savedCard={savedCard}/>
-            ))*/}
         </div>
-            );
+    );
 }
 
 
