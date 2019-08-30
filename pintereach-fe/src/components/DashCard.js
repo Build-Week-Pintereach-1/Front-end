@@ -72,7 +72,7 @@ const DashCard = ({ article, setUserDashboard, userdashboard, setToggleRefresh, 
                 <p><span className='bold-title'>Comments: </span> {hasBeenEdited.comments ? editCard.comments : comments}</p>
                 <p><span className='bold-title'>Board: </span>{hasBeenEdited.board ? editCard.board : board}</p>
                 <button className= 'save-button' onClick={toggleModal}> Edit Pinned Article </button>
-                <button className= 'save-button' onClick={deleteArticle}> Delete Pinned Article </button>
+                <button className= 'delete-btn' onClick={deleteArticle}> Delete Pinned Article </button>
             </div>
             <Modali.Modal {...modal}>
                 <EditCard

@@ -50,22 +50,23 @@ export const EditCard = ({id, userdashboard, editCard, setEditCard, setHasBeenEd
     // }
 
     return (
-        <div>
+        <div className = "edit-card">
             <h2> {userdashboard.title}</h2> 
             <h3>Published in: {userdashboard.journal}</h3>
-            <form onSubmit={editArticle}>
-                <label htmlFor="comments">Edit comments</label>
+            <form onSubmit={editArticle} className="edit-form">
+                <label htmlFor="comments">Comments</label>
                 <textarea 
-                    rows="4"
-                    cols="50"
+                    rows="10"
+                    cols="30"
                     name="comments"
                     id="comments"
                     value={editCard.comments}
                     placeholder={userdashboard.comments}
                     onChange={handleChange}
                 />
-                <label htmlFor="board">Edit board</label>
+                <label htmlFor="board">Pinned to</label>
                 <input 
+                    className="editBoard"
                     name="board"
                     id="board"
                     value={editCard.board}
