@@ -12,9 +12,9 @@ width: 100%;
     font-size: 1.3rem;
     background-color: ${Colors.primary.light};
     display: flex;
-    justify-content: space-around;
-    align-items: baseline;
-    height: 7.5rem;
+    justify-content: center;
+    align-items: center;
+    height: 6rem;
     padding: 0 2rem;
     box-shadow: 2px 2px 3px rgb(253, 132, 110);
     position: fixed;
@@ -27,14 +27,12 @@ width: 100%;
 
 `;
 
-// const LogoImg = styled.img`
-//         width: 11rem;
-//         margin-left: 2rem;
-//         position: relative;
-//         top: 1rem;
-// `;
-
 const userID = localStorage.getItem("userID")
+const logout = () => {
+  localStorage.removeItem("token"); 
+  localStorage.removeItem("userID");
+  localStorage.removeItem("searchTerm");
+}
 
 function Nav ({search, setSearch}) {
     return (
@@ -46,9 +44,10 @@ function Nav ({search, setSearch}) {
             <SearchForm search={search} setSearch={setSearch}/>
             <div className="nav-container">
                  <div className="nav-container-links">
+                    <Link to={`/user/${userID}`} >My Boards </Link>
                     <Link to="/Login">Sign in</Link>
                     <Link to="/SignUp">Create account</Link>
-                    <Link to={`/user/${userID}`} >My Boards </Link>
+                    <Link to="/" onClick={logout}>Log out</Link>
                 </div>
             </div>
         </StyledNav>

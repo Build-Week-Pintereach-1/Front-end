@@ -5,13 +5,10 @@ import { BrowserRouter as Router, Link } from 'react-router-dom'
 import { Colors } from './StyleVariables'
 
 const AdvForm = styled.form`
-    width: 50%;
-    max-width: 55rem;
-    min-width: 51rem;
+
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    padding-top: 1rem;
     color: white;
 `;
 
@@ -50,20 +47,19 @@ const Input = styled.input`
 const AdvSearchBtn = styled.button`
     background: none;
     border: none
+    min-width: 150px;
     border-radius: .3rem;
     padding: .75rem 1rem;
     color: ${Colors.primary.dark};
     cursor: pointer;
-    font-size: 1rem;
+    font-size: .85rem;
     transition: background-color .4s ease;
-    margin-left: 1rem;
     font-weight: 600;
 
 
     &:hover {
-        background-color: ${Colors.primary.midLight};
-        box-shadow: 0px 0px 3px ${Colors.primary.light};
-        transition: background-color .2s ease;
+        color: ${Colors.secondary.persimmon};
+        transition: color .2s ease;
     }
 `;
 const SearchBtn = styled.button`
@@ -91,11 +87,6 @@ const redirect = () => {
     }
     console.log("window location" , window.location)
 }
-
-
-
-
-
 
 function SearchForm ({setSearch}) {
     const [advSearch, setAdvSearch] = useState(false)
@@ -164,23 +155,18 @@ function SearchForm ({setSearch}) {
 
     return (
         <AdvForm onSubmit={assembleQuery}>
-            <FormDivider>
-                <div>
+            <FormDivider className="inner-search-div">
                     <Input
                         type="text"
                         id="query"
                         name="everything"
                         placeholder="Search everything"
                         value={tempSearch.everything}
-                        onChange={handleChange}></Input>
+                        onChange={handleChange}>
+                    </Input>
                     
-                        <SearchBtn type="submit">Search</SearchBtn>
-                    
-                    
-                        
-                </div>
-                
-
+                    <SearchBtn type="submit">Search</SearchBtn>
+ 
                 <AdvSearchBtn onClick={setAdv}>Search Options</AdvSearchBtn>
             </FormDivider>
             
