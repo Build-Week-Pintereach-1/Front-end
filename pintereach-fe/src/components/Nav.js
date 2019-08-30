@@ -16,7 +16,7 @@ const StyledNav = styled.nav`
     align-items: baseline;
     height: 5rem;
     padding: 0 2rem;
-    box-shadow: 2px 2px 3px ${Colors.primary.midLight};
+    box-shadow: 2px 2px 3px rgb(253, 132, 110);
     position: fixed;
     top: 0;
     z-index: 999;

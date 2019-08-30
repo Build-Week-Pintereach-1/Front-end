@@ -100,7 +100,7 @@ const redirect = () => {
 function SearchForm ({setSearch}) {
     const [advSearch, setAdvSearch] = useState(false)
     const [tempSearch, setTempSearch] = useState({
-        everything: "biology",
+        everything: "",
         title: "",
         author: "",
         journal: "",
@@ -135,8 +135,8 @@ function SearchForm ({setSearch}) {
 
     const assembleQuery = (e) => {
         e.preventDefault()
-        console.log("final search", tempSearch)
-        console.log(Object.entries(tempSearch))
+        // console.log("final search", tempSearch)
+        // console.log(Object.entries(tempSearch))
 
         const queryArray = Object.entries(tempSearch)
 
@@ -158,6 +158,7 @@ function SearchForm ({setSearch}) {
 
         console.log("new Array: ", newArray)
         setSearch(newArray)
+        localStorage.setItem("searchTerm", `${newArray}`)
         redirect()
     }
 
