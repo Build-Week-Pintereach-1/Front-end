@@ -230,7 +230,7 @@ border-radius: .3rem;
 border: none;
 font-size: 1.1rem;
 padding: .5rem;
-}git pu
+}
 
 .saved-card-form button:hover{
   background-color: rgba(255, 145, 50, 1);
@@ -268,6 +268,24 @@ padding: .5rem;
   display: flex;
   
 }
+button{
+  background-color: rgba(45, 130, 165, 1);
+  color: white;
+  border-radius: .3rem;
+  border: none;
+  font-size: .9rem;
+  margin-right: .7rem;
+  margin-top: .5rem;
+  padding: .5rem;
+  }
+  
+  button:hover{
+    background-color: rgba(255, 145, 50, 1);
+  }
+
+  .form-container{
+    margin-top: 15rem;
+  }
 
 
 

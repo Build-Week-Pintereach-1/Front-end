@@ -10,14 +10,15 @@ const StyledInput = styled.input`
     margin: 1%;
 `
 const StyledForm = styled.form`
-    width: 50%;
-    padding: 3%;
-    border: 1px solid blue;
-    border-radius: 6px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+width: 50%;
+padding: 3%;
+border: 1px solid blue;
+background-color: rgb(242, 246, 247);
+border-radius: 6px;
+margin: 0 auto;
+display: flex;
+flex-direction: column;
+align-items: center;
 `
 const StyledButton = styled.button`
 
@@ -59,7 +60,7 @@ const LoginForm = (props) => {
     }
 
     return (
-        <div className="login-form">
+        <div className="form-container">
             <StyledForm>
                 <h3>Login Here</h3>
                 <StyledInput
