@@ -4,7 +4,9 @@ import { SavedCard } from "./SavedCard";
 
 export default function ArticleCard({ article }) {
 
-  const [modal, toggleModal] = useModali();
+  const [modal, toggleModal] = useModali({
+                              title: 'Save Article'}
+  );
 
   const { id, abstract, title_display, author_display, journal } = article;
   
