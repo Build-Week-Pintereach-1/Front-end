@@ -6,10 +6,10 @@ const SHeader = styled.header`
     margin-bottom: 5rem;
 `;
 
-function Header ({search, setSearch}) {
+function Header ({search, setSearch, loggedIn, setLoggedIn}) {
     return (
         <SHeader>
-            <Nav search={search} setSearch={setSearch}/>
+            <Nav loggedIn={loggedIn} setLoggedIn={setLoggedIn}search={search} setSearch={setSearch}/>
         </SHeader>
         
     )

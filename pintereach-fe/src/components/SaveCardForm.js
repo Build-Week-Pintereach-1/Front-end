@@ -64,21 +64,3 @@ const SavedCardForm = ( { savedCard, toggleModal }) => {
 };
 
 export default SavedCardForm;
-
-
-
-/**
- * 
- * const functionName = () => { do stuff!!! }
- * 
- * onClick={functionName}
- * 
- * ----
- * 
- * onClick={() => {
- *     functionName();
- *     otherFunction();
- *     }
- * }
- * 
- */

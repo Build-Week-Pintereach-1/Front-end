@@ -5,96 +5,80 @@ import { BrowserRouter as Router, Link } from 'react-router-dom'
 import { Colors } from './StyleVariables'
 
 const AdvForm = styled.form`
-    width: 50%;
+
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    padding-top: 1rem;
     color: white;
-    @media (max-width:600px){
-        max-width: 30rem;
-        min-width: 10rem;
-        width: 100%;
-      }
-    
 `;
 
 const FormDivider = styled.div`
-
-
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
 `;
 
 const AdvOptions = styled.div`
+    
     background-color: ${Colors.primary.midLight};
     display: flex;
     align-items: center;
-        @media (max-width:600px){
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-}
+    padding: 1rem;
+    position: absolute;
+    z-index: -1;
+    top: 4.5rem;
+    margin-left: 4rem;
     
 `;
 
 const Input = styled.input`
-padding: .73rem;
-font-size: 1rem;
-border-top: 1px solid ${Colors.primary.midLight};
-border-left: 1px solid ${Colors.primary.midLight};
-border-bottom: 1px solid ${Colors.primary.midLight};
-width: 25rem;
-    @media (max-width:600px){
-    display: flex;
-    margin: 0 auto;
-}
+    padding: .73rem;
+    padding-left: 1.5rem;
+    width: 25rem;
+    border: none;
+    font-size: 1rem;
+    border-radius: .3rem 0 0 .3rem;
+    margin-left: 1rem;
+    border-top: 1px solid ${Colors.primary.midLight};
+    border-left: 1px solid ${Colors.primary.midLight};
+    border-bottom: 1px solid ${Colors.primary.midLight};
 `;
 
 const AdvSearchBtn = styled.button`
-background: none;
-border: none
-border-radius: .3rem;
-padding: .75rem 1rem;
-color: ${Colors.primary.dark};
-cursor: pointer;
-font-size: 1rem;
-transition: background-color .4s ease;
-margin-left: 1rem;
-font-weight: 600;
+    background: none;
+    border: none
+    min-width: 150px;
+    border-radius: .3rem;
+    padding: .75rem 1rem;
+    color: ${Colors.primary.dark};
+    cursor: pointer;
+    font-size: .85rem;
+    transition: background-color .4s ease;
+    font-weight: 600;
 
 
-&:hover {
-    background-color: ${Colors.primary.midLight};
-    box-shadow: 0px 0px 3px ${Colors.primary.light};
-    transition: background-color .2s ease;
-}
-
-@media (max-width:600px){
-    display: flex;
-    margin: 1rem auto;
-}
+    &:hover {
+        color: ${Colors.secondary.persimmon};
+        transition: color .2s ease;
+    }
 `;
 const SearchBtn = styled.button`
-background-color: ${Colors.primary.dark};
-border: none;
-border-radius: 0 .3rem .3rem 0;
-padding: .75rem 1rem;
-color: white;
-cursor: pointer;
-font-size: 1rem;
-font-weight: 500;
-transition: background-color .4s ease;
+    background-color: ${Colors.primary.dark};
+    border: none;
+    border-radius: 0 .3rem .3rem 0;
+    padding: .75rem 1rem;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color .4s ease;
 
-&:hover {
-    background-color: ${Colors.secondary.persimmon};
-    background-image: linear-gradient(120deg, ${Colors.secondary.yellowDark} 60%, ${Colors.secondary.yellow} 20% );
-    transition: background-color .2s ease;
+    &:hover {
+        background-color: ${Colors.secondary.persimmon};
+        background-image: linear-gradient(120deg, ${Colors.secondary.yellowDark} 60%, ${Colors.secondary.yellow} 20% );
+        transition: background-color .2s ease;
 
-}
-@media (max-width:600px){
-    display: flex;
-    margin: 1rem auto;
-    padding: 1rem 20%;
-}
+    }
 `;
 
 const redirect = () => {
@@ -103,11 +87,6 @@ const redirect = () => {
     }
     console.log("window location" , window.location)
 }
-
-
-
-
-
 
 function SearchForm ({setSearch}) {
     const [advSearch, setAdvSearch] = useState(false)
@@ -176,25 +155,20 @@ function SearchForm ({setSearch}) {
 
     return (
         <AdvForm onSubmit={assembleQuery}>
-            
-                <div className= 'input-container'>
+            <FormDivider className="inner-search-div">
                     <Input
                         type="text"
                         id="query"
                         name="everything"
                         placeholder="Search everything"
                         value={tempSearch.everything}
-                        onChange={handleChange}></Input>
+                        onChange={handleChange}>
+                    </Input>
                     
-                        <SearchBtn type="submit">Search</SearchBtn>
-                    
-                    
-                        
-                
-                
-
+                    <SearchBtn type="submit">Search</SearchBtn>
+ 
                 <AdvSearchBtn onClick={setAdv}>Search Options</AdvSearchBtn>
-            </div>
+            </FormDivider>
             
         
             {advSearch && 
