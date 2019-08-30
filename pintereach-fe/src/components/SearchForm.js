@@ -100,7 +100,7 @@ const redirect = () => {
 function SearchForm ({setSearch}) {
     const [advSearch, setAdvSearch] = useState(false)
     const [tempSearch, setTempSearch] = useState({
-        everything: "physics",
+        everything: "biology",
         title: "",
         author: "",
         journal: "",

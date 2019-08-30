@@ -4,14 +4,14 @@ import ArticleCard from './ArticleCard';
 import { useEffect, useState } from 'react';
 import SavedCardForm from './SaveCardForm'
 
-export const SavedCard = (props) => {
+export const SavedCard = ({id , toggleModal}) => {
 
     const [savedCard, setSavedCard] = useState([]);
-    const id = props.id
+    const artID = id
 
      useEffect(() => {
          axios
-         .get(`https://cors-anywhere.herokuapp.com/http://api.plos.org/search?q=id:${id}`)
+         .get(`https://cors-anywhere.herokuapp.com/http://api.plos.org/search?q=id:${artID}`)
          .then(res => {
              console.log("saveCard becomes: ", res.data.response.docs);
              setSavedCard(res.data.response.docs[0]);
@@ -26,7 +26,7 @@ export const SavedCard = (props) => {
         <div>
             <h2>{savedCard.title_display}</h2> 
             <h3>{savedCard.journal}</h3>
-            <SavedCardForm savedCard={savedCard} />
+            <SavedCardForm savedCard={savedCard} toggleModal={toggleModal}/>
         </div>
     );
 }

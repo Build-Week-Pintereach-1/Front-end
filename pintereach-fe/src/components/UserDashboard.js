@@ -12,6 +12,7 @@ const UserDashboard = (props) => {
     const [boardSelected, setBoardSelected] = useState(false);
     const [filteredBoard, setFilteredBoard] = useState([]);
 
+    const [toggleRefresh, setToggleRefresh] = useState(false)
     // let boardNames = [];
     useEffect(() => {
         // const getData = () => {
@@ -21,11 +22,10 @@ const UserDashboard = (props) => {
                 console.log("GET user arts :", res.data)
                 setUserdashboard(res.data)
                 setBoardNames([...new Set(res.data.map(obj => obj.board))])
-                console.log("boardNames?", boardNames)})
+            })
             .catch(err => console.log("GET ERROR!", err))
         // }
-    }, [ userdashboard.length ])
-    console.log("boardNames redux", boardNames)
+    }, [ userdashboard.length, toggleRefresh ])
     
    
 
@@ -54,10 +54,13 @@ const UserDashboard = (props) => {
     return(
         <section className="article-list">
             {/* <button > Get Articles </button> */}
-            <button onClick={unfilter}>All saved articles</button>
-            {boardNames.map(a => (
-                <button key={a} onClick={() => filterBoards(a)}> {a} </button> 
-            ))}
+            <div className="button-wrapper">
+                <button className='dash-button' onClick={unfilter}>All saved articles</button>
+                {boardNames.map(a => (
+                    <button className='dash-button' key={a} onClick={() => filterBoards(a)}> {a} </button> 
+                ))}
+            </div>
+            
             <StackGrid columnWidth={500}>
                 { !boardSelected ? userdashboard.map(article =>{
                     return <DashCard 
@@ -65,6 +68,12 @@ const UserDashboard = (props) => {
                         article= {article} 
                         setUserDashboard={setUserdashboard}
                         userdashboard={userdashboard}
+                        setToggleRefresh={setToggleRefresh}
+                        toggleRefresh={toggleRefresh}
+                        filteredBoard={filteredBoard}
+                        setFilteredBoard={setFilteredBoard}
+                        boardSelected={boardSelected}
+                        unfilter={unfilter}
                     />
                 }) :
                 filteredBoard.map(article => (
@@ -73,6 +82,12 @@ const UserDashboard = (props) => {
                         article= {article} 
                         setUserDashboard={setUserdashboard}
                         userdashboard={userdashboard}
+                        setToggleRefresh={setToggleRefresh}
+                        toggleRefresh={toggleRefresh}
+                        setFilteredBoard={setFilteredBoard}
+                        filteredBoard={filteredBoard}
+                        boardSelected={boardSelected}
+                        unfilter={unfilter}
                     />
                 ))
             }
