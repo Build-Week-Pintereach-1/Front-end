@@ -13,6 +13,7 @@ const StyledForm = styled.form`
     width: 50%;
     padding: 3%;
     border: 1px solid blue;
+    background-color: rgb(242, 246, 247);
     border-radius: 6px;
     margin: 0 auto;
     display: flex;
@@ -110,7 +111,7 @@ const SignUpForm = (props) => {
     }
 
     return (
-        <div>
+        <div className= 'form-container'>
             <StyledForm>
                 <h3>Sign Up Here</h3>
                 <StyledInput
@@ -143,7 +144,7 @@ const SignUpForm = (props) => {
                 <div style={{ fontSize: 10, color: "red" }}>
                     {inputs.passwordMatchError}
                 </div>
-                <StyledButton onClick={handleSubmit} > Sign Up </StyledButton>
+                <button className='default-button' onClick={handleSubmit} > Sign Up </button>
             </StyledForm>
         </div>
     )
