@@ -9,7 +9,6 @@ import SignUpForm from "./components/SignUp";
 import ArticleList from "./components/ArticleList";
 import UserDashboard from './components/UserDashboard';
 import PrivateRoute from "./components/PrivateRoute";
-import DisplayArticleBoard from './components/DisplayArticleBoard';
 import ArticleBoard from './components/ArticleBoard';
 
 function App() {

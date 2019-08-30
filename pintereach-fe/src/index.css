@@ -113,10 +113,11 @@ background-color: rgba(45, 130, 165, 1);
 color: white;
 border-radius: .3rem;
 border: none;
-font-size: 1.4rem;
+font-size: 1rem;
 padding: .5rem;
 transition: background-color .3s ease;
 margin-top: 1rem;
+margin-right: 1.5rem;
 }
 
 .save-button:hover{
@@ -133,6 +134,32 @@ margin-top: 1rem;
   z-index: -1;
   font-weight: 600;
   margin-bottom: 1rem;
+}
+
+.button-wrapper {
+  display: flex;
+  width: 100%;
+  margin: 4rem auto;
+
+}
+
+.dash-button{
+background-color: rgba(255, 99, 71, 1);
+color: white;
+border-radius: .3rem;
+border: none;
+font-size: 1rem;
+padding: 1rem;
+transition: background-color .3s ease;
+margin-top: 1rem;
+margin: 0 3rem;
+box-shadow: 2px 2px 10px rgba(80, 180, 212, 1);
+}
+
+.dash-button:hover{
+  background-color: rgba(255, 145, 50, 1);
+  transition: background-color .2s ease;
+
 }
 
 /* 
@@ -230,7 +257,7 @@ border-radius: .3rem;
 border: none;
 font-size: 1.1rem;
 padding: .5rem;
-}git pu
+}
 
 .saved-card-form button:hover{
   background-color: rgba(255, 145, 50, 1);
