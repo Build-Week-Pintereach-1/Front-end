@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import ArticleCard from './ArticleCard';
 import StackGrid from "react-stack-grid";
+
 function ArticleList({search}) {
     const [article, setArticle] = useState([]);
     useEffect(() => {

@@ -1,17 +1,16 @@
 import React from 'react';
 import ArticleCard from './ArticleCard'
 import { useState, useEffect } from 'react';
-// import { Form, Field, withFormik } from "formik";
-// import * as yup from 'yup';
 import axios from 'axios';
 import axiosWithAuth from '../utils/axiosWithAuth'
+import Modali, { useModali } from 'modali';
 
 // import { saveProps } from './SavedCard'
 
-const SavedCardForm = ( { savedCard  }) => {
+
+const SavedCardForm = ( { savedCard, toggleModal }) => {
     console.log("savedCard in Form", savedCard)
     const [comment, setComment] = useState("");
-
     const [board, setBoard] = useState("");
 
     const handleCommentChanges = e => {
@@ -27,8 +26,6 @@ const SavedCardForm = ( { savedCard  }) => {
     const handleSubmit = e => {
         e.preventDefault();
 
-        // console.log("Testing the AUTHORS for undefined: ", savedCard.author_display.join(", "))
-
         let submitMe = {
             abstract: savedCard.abstract[0],
             authors:   savedCard.author_display.join(", "), // IT WORKS...USUALLY!!!
@@ -37,7 +34,7 @@ const SavedCardForm = ( { savedCard  }) => {
             title: savedCard.title_display,
             comments: comment,
             board: board,
-            user_id: 1
+            user_id: localStorage.getItem("userID")
         }
         
         axios.post('https://nameless-lake-75129.herokuapp.com/addarticle', submitMe)
@@ -46,10 +43,12 @@ const SavedCardForm = ( { savedCard  }) => {
             console.log('SubmitMe after post then: ', submitMe)
              console.log("Then res: ", response)
             //  resetForm();
+
          })
          .catch(error => {
             console.log("catch err: ", error);
          });
+        toggleModal()
     }
     
     return(

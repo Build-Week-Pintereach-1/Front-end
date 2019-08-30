@@ -9,13 +9,24 @@ import SignUpForm from "./components/SignUp";
 import ArticleList from "./components/ArticleList";
 import UserDashboard from './components/UserDashboard';
 import PrivateRoute from "./components/PrivateRoute";
-import DisplayArticleBoard from './components/DisplayArticleBoard';
 import ArticleBoard from './components/ArticleBoard';
 
+const randomString = () => {
+  const bgArray = ["biology", "physics", "astronomy", "geology", "chemistry", "education", "anatomy", "psychology", "kinesiology", "computer science", "art", "history"]
+
+  const randomNum = Math.floor(Math.random() * bgArray.length)
+  const pick = bgArray[randomNum]
+  return pick;
+}
+
+
 function App() {
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState(localStorage.getItem("searchTerm") || randomString)
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token") || false)
   const [userID, setUserID] = useState(null)
+
+  
+  
 
 
   return (

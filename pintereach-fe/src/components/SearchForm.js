@@ -5,7 +5,9 @@ import { BrowserRouter as Router, Link } from 'react-router-dom'
 import { Colors } from './StyleVariables'
 
 const AdvForm = styled.form`
-    min-width: 50%;
+    width: 50%;
+    max-width: 55rem;
+    min-width: 51rem;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -29,17 +31,13 @@ const AdvOptions = styled.div`
     z-index: -1;
     top: 4.5rem;
     margin-left: 4rem;
-
-    @media screen and (max-width: 500px) {
-        display: none;
-    }
     
 `;
 
 const Input = styled.input`
     padding: .73rem;
     padding-left: 1.5rem;
-    width: 15rem;
+    width: 25rem;
     border: none;
     font-size: 1rem;
     border-radius: .3rem 0 0 .3rem;
@@ -61,14 +59,11 @@ const AdvSearchBtn = styled.button`
     margin-left: 1rem;
     font-weight: 600;
 
+
     &:hover {
         background-color: ${Colors.primary.midLight};
         box-shadow: 0px 0px 3px ${Colors.primary.light};
         transition: background-color .2s ease;
-    }
-
-    @media screen and (max-width: 500px) {
-        display: none;
     }
 `;
 const SearchBtn = styled.button`
@@ -105,7 +100,7 @@ const redirect = () => {
 function SearchForm ({setSearch}) {
     const [advSearch, setAdvSearch] = useState(false)
     const [tempSearch, setTempSearch] = useState({
-        everything: "physics",
+        everything: "",
         title: "",
         author: "",
         journal: "",
@@ -140,8 +135,8 @@ function SearchForm ({setSearch}) {
 
     const assembleQuery = (e) => {
         e.preventDefault()
-        console.log("final search", tempSearch)
-        console.log(Object.entries(tempSearch))
+        // console.log("final search", tempSearch)
+        // console.log(Object.entries(tempSearch))
 
         const queryArray = Object.entries(tempSearch)
 
@@ -163,13 +158,14 @@ function SearchForm ({setSearch}) {
 
         console.log("new Array: ", newArray)
         setSearch(newArray)
+        localStorage.setItem("searchTerm", `${newArray}`)
         redirect()
     }
 
     return (
         <AdvForm onSubmit={assembleQuery}>
             <FormDivider>
-                <div className="searchDiv">
+                <div>
                     <Input
                         type="text"
                         id="query"
@@ -178,8 +174,13 @@ function SearchForm ({setSearch}) {
                         value={tempSearch.everything}
                         onChange={handleChange}></Input>
                     
-                    <SearchBtn type="submit">Search</SearchBtn>     
+                        <SearchBtn type="submit">Search</SearchBtn>
+                    
+                    
+                        
                 </div>
+                
+
                 <AdvSearchBtn onClick={setAdv}>Search Options</AdvSearchBtn>
             </FormDivider>
             
