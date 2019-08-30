@@ -17,7 +17,7 @@ const UserDashboard = (props) => {
     useEffect(() => {
         // const getData = () => {
             axiosWithAuth()
-            .get(`https://nameless-lake-75129.herokuapp.com/articles/users/1`)
+            .get(`https://nameless-lake-75129.herokuapp.com/articles/users/${localStorage.getItem("userID")}`)
             .then(res => {
                 console.log("GET user arts :", res.data)
                 setUserdashboard(res.data)

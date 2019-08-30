@@ -115,6 +115,7 @@ const SignUpForm = (props) => {
                 console.log("Reg res: ", res)
                 props.setLoggedIn(true)
                 localStorage.setItem("token", res.data.tokenThing)
+                localStorage.setItem("userID", res.data.id)
                 routeToArticleList()
             })
             

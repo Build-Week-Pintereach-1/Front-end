@@ -20,7 +20,7 @@ function ArticleList({search}) {
     return (
       <section className="article-list">
            <StackGrid
-              columnWidth={500}
+              columnWidth={400}
       >
           {article.map(article => {
             return  <ArticleCard key= {article.id} article = {article}/>;

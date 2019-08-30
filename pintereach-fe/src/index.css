@@ -125,9 +125,8 @@ body {
 .button-wrapper {
   display: flex;
   width: 100%;
-  margin: 6rem auto;
+  margin: 4rem auto;
   margin-bottom: 2rem;
-  top: 2rem;
   justify-content: center;
   background-color: rgb(255, 163, 127);
   background-image: linear-gradient(135deg, rgb(250, 155, 73) 10%, rgb(255, 163, 127) 65%, rgb(255, 139, 118) 90%);
@@ -203,9 +202,10 @@ nav {
  position: relative;
 } 
 
+/* 
 .inner-search-div {
-  /* border: 1px blue solid; */
-}
+  border: 1px blue solid;
+} */
 
 .nav-container-links a {
   color: rgba(23, 55, 66, 1);
@@ -307,8 +307,6 @@ button{
   border-radius: .3rem;
   border: none;
   font-size: .9rem;
-  margin-right: .7rem;
-  margin-top: .5rem;
   padding: .5rem;
 }
 
@@ -325,6 +323,7 @@ button{
   color: white;
   cursor: pointer;
   margin-right: 1rem;
+  margin-top: 1rem;
   transition: background-color .3s ease;
 }
 

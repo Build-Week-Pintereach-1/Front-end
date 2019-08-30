@@ -14,7 +14,7 @@ width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 6rem;
+    height: 6.9rem;
     padding: 0 2rem;
     box-shadow: 2px 2px 3px rgb(253, 132, 110);
     position: fixed;
