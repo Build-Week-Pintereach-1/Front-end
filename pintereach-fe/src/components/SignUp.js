@@ -1,26 +1,40 @@
 import React, { useState } from "react";
 import axios from "axios";
 import styled from 'styled-components';
+import { Colors } from './StyleVariables'
+
 
 const StyledInput = styled.input`
     padding: 6px;
+    width: 60%;
+    border-color: ${Colors.secondary.persimmonLight};
     border-width: 1px;
     border-style: solid;
-    border-radius: 6px;
+    border-radius: .3rem;
     margin: 1%;
+    margin-bottom: 1rem;
+    font-size: .75rem;
 `
 const StyledForm = styled.form`
     width: 50%;
     padding: 3%;
-    border: 1px solid blue;
-    border-radius: 6px;
+    background-color: ${Colors.primary.light};
+    border-radius: .3rem;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: 2px 2px 3px ${Colors.primary.mid};
 `
 const StyledButton = styled.button`
+    background-color: ${Colors.primary.dark};
+    cursor: pointer;
+    transition: background-color .4s ease;
 
+    &:hover {
+        background-color: ${Colors.secondary.persimmon};
+        transition: background-color .2s ease;
+    }
 `
 const initState = {
     username: "",
@@ -99,6 +113,7 @@ const SignUpForm = (props) => {
             .post("https://nameless-lake-75129.herokuapp.com/register", creds)
             .then(res => {
                 console.log("Reg res: ", res)
+                props.setLoggedIn(true)
                 localStorage.setItem("token", res.data.tokenThing)
                 routeToArticleList()
             })
@@ -110,7 +125,7 @@ const SignUpForm = (props) => {
     }
 
     return (
-        <div>
+        <div className= 'form-container'>
             <StyledForm>
                 <h3>Sign Up Here</h3>
                 <StyledInput
@@ -143,7 +158,7 @@ const SignUpForm = (props) => {
                 <div style={{ fontSize: 10, color: "red" }}>
                     {inputs.passwordMatchError}
                 </div>
-                <StyledButton onClick={handleSubmit} > Sign Up </StyledButton>
+                <StyledButton className='default-button' onClick={handleSubmit} > Sign Up </StyledButton>
             </StyledForm>
         </div>
     )

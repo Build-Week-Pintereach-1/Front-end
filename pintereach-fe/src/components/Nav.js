@@ -20,39 +20,49 @@ width: 100%;
     position: fixed;
     top: 0;
     z-index: 999;
+
     @media screen and (max-width:600px) {
-        display: inline;
-        height: 25rem;
+      flex-direction: column;
+      position: relative;
+      border: 1px red solid;
+      height: 15rem;
       }
 
 `;
 
 const userID = localStorage.getItem("userID")
-const logout = () => {
-  localStorage.removeItem("token"); 
-  localStorage.removeItem("userID");
-  localStorage.removeItem("searchTerm");
-}
 
-function Nav ({search, setSearch}) {
-    return (
-      <div classname = "header-container">
-        <StyledNav>
-            <div className="logo-container">
-                <Link to="/"><img src={Icon}/></Link>
-            </div>
-            <SearchForm search={search} setSearch={setSearch}/>
-            <div className="nav-container">
-                 <div className="nav-container-links">
+function Nav ({search, setSearch, loggedIn, setLoggedIn}) {
+  const logout = () => {
+    localStorage.removeItem("token"); 
+    localStorage.removeItem("userID");
+    localStorage.removeItem("searchTerm");
+    setLoggedIn(false)
+  }
+  return (
+    <div className = "header-container">
+      <StyledNav>
+          <div className="logo-container">
+              <Link to="/"><img src={Icon}/></Link>
+          </div>
+          <SearchForm search={search} setSearch={setSearch}/>
+          <div className="nav-container">
+              {loggedIn ? (
+               <div className="nav-container-links">
+                 {console.log("LI", loggedIn)}
                     <Link to={`/user/${userID}`} >My Boards </Link>
-                    <Link to="/Login">Sign in</Link>
-                    <Link to="/SignUp">Create account</Link>
                     <Link to="/" onClick={logout}>Log out</Link>
                 </div>
-            </div>
-        </StyledNav>
-      </div>
-    )
+                    ) : (
+                <div className="nav-container-links">
+                    <Link to="/Login">Sign in</Link>
+                    <Link to="/SignUp">Create account</Link>
+                </div>
+              )}
+          </div>
+      </StyledNav>
+    </div>
+  )
 }
 
 export default Nav
